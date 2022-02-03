@@ -61,7 +61,7 @@ export class NewRegisterPage implements OnInit {
   }
 
   public goLogInPage(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/novo-login']);
   }
 
   public goHttp(): void {

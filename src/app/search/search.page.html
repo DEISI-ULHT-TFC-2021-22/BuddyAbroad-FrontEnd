@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar style="color:#F0F0F0;">
+        <div class="container">
+
+            <div class="container__image">
+                <img src="assets/logoandname.png">
+            </div>
+
+            <div class="container__text">
+                <ion-title class="ion-text-center" style="font:bold 23px OpenSans-Bold;color: #3D3D3D;"></ion-title>
+            </div>
+        </div>
+
+        <ion-buttons slot="end">
+            <ion-button routerLink="/messages/">
+                <ion-icon name="chatbox-ellipses" class="belllogo" ></ion-icon>
+            </ion-button>
+            <ion-button>
+                <ion-icon name="notifications" class="belllogo"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-searchbar placeholder="Search" (ionInput)="filterList($event)"></ion-searchbar>
+
+<ion-content>
+    <section>
+        <ion-list>
+            <ion-card *ngFor="let homeTripCard of allHomeTripCards"
+                      routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+                <ion-img [src]="homeTripCard.image"></ion-img>
+                <div class="myOverlay">
+                    <p class="price-tag">€ {{homeTripCard.price}}</p>
+                </div>
+                <ion-card-header>
+                    <ion-card-title
+                            style="font: bold 20px OpenSans-Bold;color: #3D3D3D;text-align: left">{{homeTripCard.name}}
+                        <ion-chip color="white">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-label>{{homeTripCard.rating}}</ion-label>
+                        </ion-chip>
+                    </ion-card-title>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                </ion-card-header>
+            </ion-card>
+        </ion-list>
+    </section>
+
+</ion-content>

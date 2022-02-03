@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar style="color:#F0F0F0;">
+        <div class="container">
+            <div class="container__image">
+              <ion-buttons slot="start">
+                <ion-button (click)="goback()">
+                  <ion-icon name="close-circle" class="close"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+
+            <div class="container__text">
+                <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Check Out
+                </ion-title>
+            </div>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div style="background: white;padding: 2px;box-shadow: 0px 3px 6px #C2C2C2;">
+        <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Order Details</ion-text>
+
+        <div class="orderDetails" style="margin: 2%;padding: 2%">
+            <ion-item color="transparent" style="background: transparent" lines="none">
+                <img class="visitsNear-image" src="{{trip?.image}}">
+                <ion-label>
+                    <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">{{trip?.name}}</h2>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip?.description}}</p>
+                </ion-label>
+            </ion-item>
+        </div>
+
+    </div>
+
+    <div style="background: white;margin-top: 3%;padding-bottom: 3%;box-shadow: 0px 3px 6px #C2C2C2;">
+        <p>
+            <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Booked Date</ion-text>
+        </p>
+        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">{{this.desiredDate}}, {{this.desiredTime}}
+        </ion-text>
+    </div>
+
+    <div style="background: white;margin-top: 3%;padding-bottom: 3%;box-shadow: 0px 3px 6px #C2C2C2;opacity: 50%">
+        <p>
+            <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Billing Address</ion-text>
+        </p>
+        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">XXX
+        </ion-text>
+    </div>
+
+    <div style="background: white;margin-top: 3%;padding-bottom: 3%;box-shadow: 0px 3px 6px #C2C2C2;opacity: 50%">
+        <p>
+            <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Payment</ion-text>
+        </p>
+        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">VISA ending in XXXX</ion-text>
+    </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <ion-toolbar class="footerBar" color="backgrould">
+
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">Price breakdown</span>
+        </ion-title>
+
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult {{desiredParticipants}} x € {{calculatePrice()}}</span>
+        </ion-title>
+
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Order Total</span>
+        </ion-title>
+
+        <ion-buttons>
+            <ion-button
+                    style="background-color: #FEAA00;border-radius: 24px;width: 100%;height: 40px;margin-bottom: 2%" (click)="onSubmit()">
+                <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;">Pay €€€</span>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

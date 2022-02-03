@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar style="color:#F0F0F0;">
+        <div class="container">
+
+            <div class="container__image">
+                <img src="assets/logoandname.png">
+            </div>
+
+            <div class="container__text">
+                <ion-title class="ion-text-center" style="font:bold 23px OpenSans-Bold;color: #3D3D3D;"></ion-title>
+            </div>
+        </div>
+
+        <ion-buttons slot="end">
+            <ion-button routerLink="/messages/">
+                <ion-icon name="chatbox-ellipses" class="belllogo" ></ion-icon>
+            </ion-button>
+            <ion-button>
+                <ion-icon name="notifications" class="belllogo"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="topTrip">
+        <span class="topTrip-header" style="padding-top: 2px;padding-left: 2px"> Top Visits Today</span>
+        <ion-slides [options]="{slidesPerView: 3}">
+            <ion-slide class="top-slide" *ngFor="let homeTripCard of allHomeTripCards | slice:0:3;"
+                       routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+                <img style="object-fit: cover;border-radius: 8px;height: 100px" [src]="homeTripCard.image">
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <section style="background-color: #F0F0F0;padding: 2px">
+        <span class="visitsNear-header"> Visits Near You</span>
+    </section>
+
+    <section>
+        <ion-list *ngFor="let label of labels">
+            <ion-list-header>
+                <ion-label class="labelHeader" style="text-align:left;">
+                    {{label}}<span style="float:right;margin-right: 2%">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+    </span>
+                </ion-label>
+            </ion-list-header>
+            <ion-slides>
+                <ion-slide *ngFor="let homeTripCard of allHomeTripCards">
+                    <ion-card routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+                        <ion-img [src]="homeTripCard.image"></ion-img>
+                        <div class="myOverlay">
+                            <p class="price-tag">€ {{homeTripCard.price}}</p>
+                        </div>
+                        <ion-card-header>
+                            <ion-card-title
+                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}
+                                <ion-chip color="white">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-label>{{homeTripCard.rating}}</ion-label>
+                                </ion-chip>
+                            </ion-card-title>
+                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                        </ion-card-header>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </ion-list>
+    </section>
+</ion-content>
+

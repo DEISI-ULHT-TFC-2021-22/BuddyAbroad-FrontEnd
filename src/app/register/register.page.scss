@@ -1,0 +1,39 @@
+.error-message {
+  color: var(--ion-color-danger);
+}
+
+.success-message {
+  color: var(--ion-color-success);
+}
+
+.go-to-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  margin-top: 40px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+a{
+  color: #F9BB15;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: 10%;
+}
+
+img{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+

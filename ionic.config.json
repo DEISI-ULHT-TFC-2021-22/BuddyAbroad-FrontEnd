@@ -1,0 +1,12 @@
+{
+  "name": "my-first-firebase-app",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [{
+    "path": "/novo.login",
+    "proxyUrl": "http://18.171.19.26/"
+  }]
+}

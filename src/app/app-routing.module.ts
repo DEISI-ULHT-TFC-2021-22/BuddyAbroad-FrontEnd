@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'novo-login',
     loadChildren: () => import('./novo-login/novo-login.module').then( m => m.NovoLoginPageModule)
   },
+  {
+    path: 'new-register',
+    loadChildren: () => import('./new-register/new-register.module').then(m => m.NewRegisterPageModule)
+},
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ export class NovoLoginPage implements OnInit {
   }
 
   public goRegisterPage(): void {
-    this.route.navigate(['/register']);
+    this.route.navigate(['/new-register']);
   }
 
 

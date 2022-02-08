@@ -1,9 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-//import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 //import {FireAuthService} from '../fire-auth.service';
 //import {FireStorageService} from '../fire-storage.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+
+import { AlertController } from '@ionic/angular';
+
+import FormJSon from '../../assets/register_form.json';
+
+
+  export interface Options {
+      label?: string;
+      placeholder?: string;
+      required?: boolean;
+      type?: string;
+  }
+
+  export interface FormControlObject {
+      key: string;
+      type: string;
+      options: Options;
+  }
+
+
 
 @Component({
   selector: 'app-new-register',
@@ -14,8 +34,31 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 export class NewRegisterPage implements OnInit {
 
+  myForm : FormGroup;
+  registerForm = FormJSon;
+
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController){
+    console.log(FormJSon);
+    this.myForm = this.fb.group({})
+
+    this.createControls(this.registerForm);
+  }
+
+  createControls(controls : Array<FormControlObject>){
+    for(let control of controls) {
+      const newFormControl = new FormControl();
+
+      if (control.options.required) {
+        newFormControl.setValidators(Validators.required);
+      }
+
+      this.myForm.addControl(control.key,newFormControl);
+    }
+    console.log('My form:', this.myForm);
+  }
+
   //public validationsForm: FormGroup;
-  public sucessMessage = "";
+  /**public sucessMessage = "";
   public errorMessage = "";
   public validationMessages = {
     email: [
@@ -41,7 +84,7 @@ export class NewRegisterPage implements OnInit {
     //private formBuilder: FormBuilder,
     //private authService: FireAuthService,
     //private fireStorageService: FireStorageService
-  ) { }
+  ) { }*/
 
   public ngOnInit(): void {
     /*this.validationsForm= this.formBuilder.group({
@@ -61,7 +104,7 @@ export class NewRegisterPage implements OnInit {
   }
 
   public goLogInPage(): void {
-    this.router.navigate(['/novo-login']);
+    //this.router.navigate(['/novo-login']);
   }
 
   public goHttp(): void {
@@ -113,7 +156,7 @@ export class NewRegisterPage implements OnInit {
         console.log(error);
       });*/
 
-      this.http.delete('http://18.171.19.26/users/?format=json', requestOptions);
+      //this.http.delete('http://18.171.19.26/users/?format=json', requestOptions);
   }
 
 }

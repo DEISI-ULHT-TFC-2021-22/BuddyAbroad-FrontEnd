@@ -1,0 +1,47 @@
+[
+        {
+        "key": "email",
+        "type": "input",
+        "options": {
+            "label": "email",
+            "placeholder": "johndoe@example.com",
+            "required": true
+        }
+    },
+    {
+        "key": "mobile phone",
+        "type": "input",
+        "options": {
+            "label": "mobile phone",
+            "placeholder": "9222222",
+            "required": true
+        }
+    },
+    {
+        "key": "full name",
+        "type": "input",
+        "options": {
+            "label": "full name",
+            "placeholder": "John Doe",
+            "required": true
+        }
+    },
+    {
+        "key": "password",
+        "type": "input",
+        "options": {
+            "label": "password",
+            "placeholder": "Minimum 6 characters",
+            "required": true,
+            "type" : "password"
+        }
+    },
+    {
+        "key": "birth date",
+        "type": "date",
+        "options": {
+            "label": "birth date",
+            "required": true
+        }
+    }
+]

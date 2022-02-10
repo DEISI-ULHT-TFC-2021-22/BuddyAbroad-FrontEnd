@@ -37,7 +37,7 @@ export class NewRegisterPage implements OnInit {
   myForm : FormGroup;
   registerForm = FormJSon;
 
-  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient){
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router){
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -59,7 +59,7 @@ export class NewRegisterPage implements OnInit {
 
   async submitForm() {
     const alert = await this.alertCtrl.create({
-      header: 'Your Form',
+      header: 'Test!',
       message: JSON.stringify(this.myForm.value),
       buttons : ['OK']
     });
@@ -114,7 +114,7 @@ export class NewRegisterPage implements OnInit {
   }
 
   public goLogInPage(): void {
-    //this.router.navigate(['/novo-login']);
+    this.route.navigate(['/novo-login']);
   }
 
  /* public goHttp(): void {
@@ -194,7 +194,7 @@ export class NewRegisterPage implements OnInit {
       "f_name": this.myForm.controls['full name'].value,
       "l_name": this.myForm.controls['password'].value,
       "email": this.myForm.controls['email'].value,
-      "dob": this.myForm.controls['birth date'].value,
+      "dob": this.myForm.controls['birth date'].value.split('T')[0],
       "phone": this.myForm.controls['mobile phone'].value,
       "image": null,
       "description": "test",

@@ -191,13 +191,13 @@ export class NewRegisterPage implements OnInit {
               "name": ""
           }
       ],
-      "f_name": this.myForm.controls['full name'].value,
-      "l_name": this.myForm.controls['password'].value,
+      "name": this.myForm.controls['full name'].value,
+      //"l_name": this.myForm.controls['password'].value,
       "email": this.myForm.controls['email'].value,
       "dob": this.myForm.controls['birth date'].value.split('T')[0],
       "phone": this.myForm.controls['mobile phone'].value,
       "image": null,
-      "description": "test",
+      "description": "",
       "age": 37,
       "rating": 4,
       "tourcount": 8,

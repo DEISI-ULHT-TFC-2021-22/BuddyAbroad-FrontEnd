@@ -24,7 +24,7 @@ export class NovoLoginPage implements OnInit {
   }
 
   public goHomePage(): void{
-    this.route.navigate(['/profile']);
+    this.route.navigate(['//tabs/home']);
   }
 
 

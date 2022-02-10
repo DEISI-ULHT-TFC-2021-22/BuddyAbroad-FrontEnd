@@ -19,7 +19,7 @@
 
   <ion-card-content>
     <div class="buttons">
-      <ion-button fill="outline" expand="block" class="login-button">
+      <ion-button (click)="goHomePage()" fill="outline" expand="block" class="login-button">
         Login
       </ion-button>
 
@@ -27,9 +27,12 @@
         Sign Up
       </ion-button>
 
+      <!--
       <ion-button (click)="test()" fill="outline" expand="block" class="sign-button">
         test
       </ion-button>
+      -->
+      
     </div>
   </ion-card-content>
 

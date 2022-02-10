@@ -23,6 +23,10 @@ export class NovoLoginPage implements OnInit {
     this.route.navigate(['/new-register']);
   }
 
+  public goHomePage(): void{
+    this.route.navigate(['/profile']);
+  }
+
 
   public test(): void {
     var headers = new HttpHeaders();

@@ -37,7 +37,7 @@ export class NewRegisterPage implements OnInit {
   myForm : FormGroup;
   registerForm = FormJSon;
 
-  constructor(private fb : FormBuilder, private alertCtrl : AlertController){
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient){
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -55,6 +55,16 @@ export class NewRegisterPage implements OnInit {
       this.myForm.addControl(control.key,newFormControl);
     }
     console.log('My form:', this.myForm);
+  }
+
+  async submitForm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Your Form',
+      message: JSON.stringify(this.myForm.value),
+      buttons : ['OK']
+    });
+
+    await alert.present();
   }
 
   //public validationsForm: FormGroup;
@@ -107,12 +117,12 @@ export class NewRegisterPage implements OnInit {
     //this.router.navigate(['/novo-login']);
   }
 
-  public goHttp(): void {
-    /*
+ /* public goHttp(): void {
+    
     this.http.get('http://18.171.19.26/users/')
     .subscribe((response) => {
       console.log(response);
-    });*/
+    });
 
     
     var headers = new HttpHeaders();
@@ -149,14 +159,57 @@ export class NewRegisterPage implements OnInit {
       "guide": null
     }
 
-    /*this.http.post("http://18.171.19.26/users/?format=json", postData, requestOptions)
+    this.http.post("http://18.171.19.26/users/?format=json", postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
-      });*/
+      });
 
       //this.http.delete('http://18.171.19.26/users/?format=json', requestOptions);
+  } */
+
+  public test(): void {
+    var headers = new HttpHeaders();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    //const requestOptions = new RequestHeaders({ headers: headers });
+
+    const requestOptions = {
+      headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
+    };
+
+    let postData = {
+      "id": 0,
+      "interests": [
+        {
+            "name": ""
+        }
+      ],
+      "languages": [
+          {
+              "name": ""
+          }
+      ],
+      "f_name": this.myForm.controls['full name'].value,
+      "l_name": this.myForm.controls['password'].value,
+      "email": this.myForm.controls['email'].value,
+      "dob": this.myForm.controls['birth date'].value,
+      "phone": this.myForm.controls['mobile phone'].value,
+      "image": null,
+      "description": "test",
+      "age": 37,
+      "rating": 4,
+      "tourcount": 8,
+      "guide": null
+    }; 
+
+    this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
   }
 
 }

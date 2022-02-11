@@ -24,22 +24,25 @@
 ion-input {
     --background: #ffff;
     --padding-start: 20px;
-    height: 55px;
+    height: 50px;
     border-radius: 25px;
     margin-bottom: 22px;
     color: #000000;
-    width: 95%;
+    width: 300px;
+    margin-left: 2em;
+    margin-top: 0.5em;
 }
+
 ion-label {
     font-family:OpenSans-Bold;
     src: url("/assets/fonts/OpenSans-Bold.ttf");
     margin-left: 1em;
 }
 
-button {
-    margin-top: 2em;
-    margin-left: 6em;
-    width: 50%;
+ion-button {
+    margin-top: 1.5em;
+    margin-left: 4em;
+    width: 300px;
     --background: #ffff; 
     border: 2px solid #feaa00;
     height: 3em;
@@ -50,16 +53,17 @@ ion-img {
     width: 8em;
     margin-top: 4em;
     margin-left: 9em;
+    margin-bottom: 2em;
 }
 
 span {
     font-family:OpenSans-Regular;
     src: url("/assets/fonts/OpenSans-Regular.ttf");
     font-size: small;
-    margin-left: 2em;
+    margin-left: 3em;
 }
 
-.register-form {
+ion-label {
     margin-top: 2em;
     margin-left: 2em;
 }
@@ -68,6 +72,4 @@ span {
     margin-top: 2em;
     margin-left: 6em;
 }
-
-
 

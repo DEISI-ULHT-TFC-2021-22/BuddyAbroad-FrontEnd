@@ -4,7 +4,6 @@
 <ion-content>
   <ion-img src="/assets/logo sem fundo.png"></ion-img>
 
-  <div class="register-form">
     <form [formGroup] = "myForm" (ngSubmit)="test()"> 
       <ion-item *ngFor="let c of registerForm">
         <ion-label position="stacked">
@@ -17,7 +16,7 @@
         </div>
         
       </ion-item>
-
+    <br><br>
     <span>By signing up, you agree to our <b>Terms</b> & <b>Privacy Policy</b>.</span>
 
     <ion-button type="submit" expand ="block" [disabled]="!myForm.valid">SIGN UP</ion-button>
@@ -27,6 +26,5 @@
 
     <!-- <p><a (click)="goHttp()">qualquer cena</a></p> -->
     
-  </div>
 </ion-content>
 

@@ -204,7 +204,20 @@ export class NewRegisterPage implements OnInit {
       "guide": null
     }; 
 
+    let postData2 = {
+      "email": this.myForm.controls['email'].value,
+      "password" : this.myForm.controls['password'].value
+    }; 
+
+
     this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
+
+      this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {

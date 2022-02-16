@@ -14,7 +14,8 @@
         "options": {
             "label": "mobile phone",
             "placeholder": "9222222",
-            "required": true
+            "required": true,
+            "type": "number"
         }
     },
     {

@@ -4,7 +4,7 @@
 <ion-content>
   <ion-img src="/assets/logo sem fundo.png"></ion-img>
 
-    <form [formGroup] = "myForm" (ngSubmit)="test()"> 
+    <form [formGroup] = "myForm" (ngSubmit)="confirmation()"> 
       <ion-item *ngFor="let c of registerForm">
         <ion-label position="stacked">
           {{ c.options.label }}

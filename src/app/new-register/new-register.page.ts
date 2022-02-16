@@ -103,7 +103,7 @@ export class NewRegisterPage implements OnInit {
   ) { }*/
 
   public ngOnInit(): void {
-    /*this.validationsForm= this.formBuilder.group({
+    /*this.myForm = this.fb.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
@@ -237,7 +237,8 @@ export class NewRegisterPage implements OnInit {
 
   async confirmation() {
     const alert = await this.alertCtrl.create({
-      cssClass: 'alert',
+      mode:'ios',
+      backdropDismiss: false,
       header: 'Confirmation Code',
       subHeader: 'An email containing the verification code was sent to ' + this.myForm.controls['email'].value,
       message: 'Please insert the code:',
@@ -245,6 +246,7 @@ export class NewRegisterPage implements OnInit {
         type: 'text', name: 'verificationCode', placeholder: 'Verification Code'
       }],
       buttons: [{
+        cssClass: 'buttonAlert',
         text: 'SUBMIT', handler: (res) => {
           var headers = new HttpHeaders();
           headers.append("Accept", 'application/json');

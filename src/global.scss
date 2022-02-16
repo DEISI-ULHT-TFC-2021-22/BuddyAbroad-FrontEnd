@@ -82,3 +82,14 @@ ion-header {
   src: url("/assets/fonts/OpenSans-Light.ttf");
 }
 
+.buttonAlert {
+  color: #feaa00 !important;
+}
+
+.picker-opt.picker-opt-selected, .picker-prefix, .picker-suffix {
+  color: #feaa00;
+}
+
+.picker-button.sc-ion-picker-md, .picker-button.activated.sc-ion-picker-md {
+  color: #feaa00;
+}

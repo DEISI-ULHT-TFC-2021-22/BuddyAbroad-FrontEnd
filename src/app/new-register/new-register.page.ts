@@ -3,11 +3,17 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 //import {FireAuthService} from '../fire-auth.service';
 //import {FireStorageService} from '../fire-storage.service';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
 import { AlertController } from '@ionic/angular';
 
 import FormJSon from '../../assets/register_form.json';
+
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+
+
 
 
   export interface Options {
@@ -217,12 +223,67 @@ export class NewRegisterPage implements OnInit {
         console.log(error);
       });
 
-      this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions)
+    this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions).pipe(
+      catchError(this.handleError)
+    )
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
       });
+
+      this.confirmation();
   }
 
+  async confirmation() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'alert',
+      header: 'Confirmation Code',
+      subHeader: 'An email containing the verification code was sent to ' + this.myForm.controls['email'].value,
+      message: 'Please insert the code:',
+      inputs: [{
+        type: 'text', name: 'verificationCode', placeholder: 'Verification Code'
+      }],
+      buttons: [{
+        text: 'SUBMIT', handler: (res) => {
+          var headers = new HttpHeaders();
+          headers.append("Accept", 'application/json');
+          headers.append('Content-Type', 'application/json' );
+          //const requestOptions = new RequestHeaders({ headers: headers });
+
+          const requestOptions = {
+            headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
+          };
+
+          let postData = {
+            "email": this.myForm.controls['email'].value,
+            "code" : res.verificationCode
+          }; 
+          this.http.post('http://18.171.19.26/confirmAccount/?format=json', postData, requestOptions).pipe(
+            catchError(this.handleError)
+          )
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
+          this.goLogInPage();
+        }
+      }]
+    });
+
+    await alert.present();
+
+    //const { role } = await alert.onDidDismiss();
+    //console.log('onDidDismiss resolved with role', role);
+  }
+
+  handleError(error: Response) {
+    if (error.status == 500) {      
+      console.log("entrei");
+      //this.confirmation();
+    } else {
+      return Observable.throw(error);
+    }
+}
 }

@@ -11,6 +11,7 @@ import FormJSon from '../../assets/register_form.json';
 
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { $$ } from 'protractor';
 
 
 
@@ -21,6 +22,9 @@ import { catchError } from 'rxjs/operators';
       placeholder?: string;
       required?: boolean;
       type?: string;
+      exactLength?: number;
+      minLength?: number
+      contains?: string
   }
 
   export interface FormControlObject {
@@ -54,9 +58,32 @@ export class NewRegisterPage implements OnInit {
     for(let control of controls) {
       const newFormControl = new FormControl();
 
-      if (control.options.required) {
+      if (control.options.required && control.key == "password") {
+        newFormControl.setValidators([Validators.required,
+        Validators.minLength(control.options.minLength), Validators.maxLength(32)]);
+      }
+
+      if(control.options.required && control.key == "mobile phone"){
+        newFormControl.setValidators([Validators.maxLength(control.options.exactLength),
+          Validators.minLength(control.options.exactLength),Validators.required]);
+      }
+
+      if(control.options.required && control.key == "email"){
+        newFormControl.setValidators([Validators.required, Validators.minLength(6), 
+          Validators.maxLength(32),Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$')]);
+      }
+
+      if(control.options.required && control.key == "full name") {
+        newFormControl.setValidators([Validators.required,
+          Validators.maxLength(50),
+          Validators.pattern('^[a-zA-Z ]*$')]);
+      }
+
+      if(control.options.required && control.key == "birth date") {
         newFormControl.setValidators(Validators.required);
       }
+      //control.options.exactLength
+
 
       this.myForm.addControl(control.key,newFormControl);
     }

@@ -2,10 +2,12 @@
         {
         "key": "email",
         "type": "input",
+        "format": "email",
         "options": {
             "label": "email",
             "placeholder": "johndoe@example.com",
-            "required": true
+            "required": true,
+            "contains": "@"
         }
     },
     {
@@ -15,7 +17,8 @@
             "label": "mobile phone",
             "placeholder": "9222222",
             "required": true,
-            "type": "number"
+            "type": "number",
+            "exactLength": 9
         }
     },
     {
@@ -34,7 +37,8 @@
             "label": "password",
             "placeholder": "Minimum 6 characters",
             "required": true,
-            "type" : "password"
+            "type" : "password",
+            "minLength": 6
         }
     },
     {

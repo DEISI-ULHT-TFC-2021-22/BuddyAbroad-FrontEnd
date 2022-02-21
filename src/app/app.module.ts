@@ -31,7 +31,6 @@ export const firebaseConfig = {
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [],
     imports: [
         BrowserModule,
         IonicModule.forRoot(),
@@ -41,11 +40,12 @@ export const firebaseConfig = {
         AngularFireDatabaseModule,
         AngularFireStorageModule,
         AppRoutingModule,
-        HttpClientModule],
+        HttpClientModule
+    ],
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ],
     bootstrap: [AppComponent]
 })

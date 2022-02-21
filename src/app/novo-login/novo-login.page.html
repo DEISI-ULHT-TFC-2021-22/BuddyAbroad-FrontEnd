@@ -4,36 +4,39 @@
 
 <ion-content>
   <div class="image-container">
-    <img class="center" src="/assets/logo sem fundo.png"/>
+    <ion-img class="center" src="/assets/logo sem fundo.png"></ion-img>
   </div>
 
-  <div class = "form">
-    <h4>Email</h4>
-    <ion-input type="email" placeholder="Email">
-    </ion-input>
+  <form [formGroup] = "myForm" (ngSubmit)="goHomePage()"> 
+    <ion-item *ngFor="let c of loginForm">
+      <ion-label position="stacked">
+        {{ c.options.label }}
+      </ion-label>
 
-    <h4>Password</h4>
-    <ion-input type="password" placeholder="Password">
-    </ion-input>
-  </div>
+      <div [ngSwitch] = "c.type">
+        <ion-input *ngSwitchCase="'input'"  [type] = "c.options.type ? c.options.type : 'text'" [formControlName] = "c.key" [placeholder] = "c.options.placeholder"></ion-input>
+      </div>
 
-  <ion-card-content>
-    <div class="buttons">
-      <ion-button (click)="test()" fill="outline" expand="block" class="login-button">
+    </ion-item>
+  
+
+    <!--<div class="buttons"> -->
+      <ion-button type="submit" fill="outline" expand="block" [disabled]="!myForm.valid" class="login-button">
         Login
       </ion-button>
+
+    </form>
 
       <ion-button (click)="goRegisterPage()" fill="outline" expand="block" class="sign-button">
         Sign Up
       </ion-button>
 
-      <!--
-      <ion-button (click)="test()" fill="outline" expand="block" class="sign-button">
-        test
-      </ion-button>
-      -->
       
-    </div>
-  </ion-card-content>
+      <!--<ion-button (click)="test()" fill="outline" expand="block" class="sign-button">
+        test
+      </ion-button> -->
+      
+      
+    <!--</div>-->
 
 </ion-content>

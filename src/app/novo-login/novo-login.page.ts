@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { Router } from '@angular/router';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -7,8 +8,21 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { AlertController } from '@ionic/angular';
 
-import FormJSon from '../../assets/register_form.json';
+import FormJSon from '../../assets/login_form.json';
 
+
+export interface Options {
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+  type?: string;
+}
+
+export interface FormControlObject {
+  key: string;
+  type: string;
+  options: Options;
+}
 
 @Component({
   selector: 'app-novo-login',
@@ -18,11 +32,39 @@ import FormJSon from '../../assets/register_form.json';
 export class NovoLoginPage implements OnInit {
 
   myForm : FormGroup;
-  registerForm = FormJSon;
+  loginForm = FormJSon;
 
-  constructor(private route : Router, public http : HttpClient) { }
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router){
+    console.log(FormJSon);
+    this.myForm = this.fb.group({})
 
-  ngOnInit() {
+    this.createControls(this.loginForm);
+  }
+
+  public ngOnInit(): void {
+  }
+
+  createControls(controls : Array<FormControlObject>){
+    for(let control of controls) {
+      const newFormControl = new FormControl();
+
+      if(control.options.required) {
+        newFormControl.setValidators(Validators.required);
+      }
+
+      this.myForm.addControl(control.key,newFormControl);
+    }
+  console.log('My form', this.myForm);
+  }
+
+  async submitForm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Test!',
+      message: JSON.stringify(this.myForm.value),
+      buttons : ['OK']
+    });
+
+    await alert.present();
   }
 
   public goRegisterPage(): void {
@@ -77,7 +119,7 @@ export class NovoLoginPage implements OnInit {
       });
   }*/
 
-  public test(): void {
+  /*public test(): void {
     var headers = new HttpHeaders();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -118,5 +160,5 @@ export class NovoLoginPage implements OnInit {
        }, error => {
         console.log(error);
       });
-  }
+  }*/
 }

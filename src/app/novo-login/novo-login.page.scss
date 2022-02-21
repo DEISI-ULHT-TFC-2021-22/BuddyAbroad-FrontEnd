@@ -45,14 +45,23 @@ h4 {
 }
 
 ion-input {
-	--background: #fff;
-	--padding-start: 33px;
-	height: 55px;
-	border-radius: 25px;
-	margin-bottom: 22px;
-	color: #000000;
+	--background: #ffff;
+    --padding-start: 20px;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 22px;
+    color: #000000;
+    width: 300px;
+    margin-left: 2em;
+    margin-top: 0.5em;
+    text-indent: 1em;
 }
 
+ion-label {
+    font-family:OpenSans-Bold;
+    src: url("/assets/fonts/OpenSans-Bold.ttf");
+    margin-left: 1em;
+}
 
 .center {
 	display: block;
@@ -62,7 +71,7 @@ ion-input {
 	margin-bottom: 10%;
 }
   
-img {
+ion-img {
 	margin-left: auto;
 	margin-right: auto;
 	width: 70%;
@@ -82,6 +91,7 @@ img {
 	color: #feaa00;
 	--background:#fff;
 	--border-color: #feaa00;
+	margin-top: 60px;
 }
 
 .sign-button {
@@ -91,9 +101,13 @@ img {
 	--border-color: #fff;
 }
 
-.buttons {
+ion-button {
 	margin-top: 0px;
 	text-align: center;
 	padding: 0 12vw;
+}
+
+form{
+	margin-top: 2px;
 }
 

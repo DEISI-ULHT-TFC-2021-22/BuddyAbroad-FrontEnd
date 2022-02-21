@@ -5,7 +5,7 @@
         "format": "email",
         "options": {
             "label": "email",
-            "placeholder": "johndoe@example.com",
+            "placeholder": "Email",
             "required": true
         }
     },
@@ -14,7 +14,7 @@
         "type": "input",
         "options": {
             "label": "password",
-            "placeholder": "Minimum 6 characters",
+            "placeholder": "Password",
             "required": true,
             "type" : "password"
         }

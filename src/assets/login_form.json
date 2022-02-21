@@ -1,0 +1,22 @@
+[
+        {
+        "key": "email",
+        "type": "input",
+        "format": "email",
+        "options": {
+            "label": "email",
+            "placeholder": "johndoe@example.com",
+            "required": true
+        }
+    },
+    {
+        "key": "password",
+        "type": "input",
+        "options": {
+            "label": "password",
+            "placeholder": "Minimum 6 characters",
+            "required": true,
+            "type" : "password"
+        }
+    }
+]

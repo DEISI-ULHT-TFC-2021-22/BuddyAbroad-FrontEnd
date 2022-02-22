@@ -161,4 +161,29 @@ export class NovoLoginPage implements OnInit {
         console.log(error);
       });
   }*/
+
+  public test(): void {
+    var headers = new HttpHeaders();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    //const requestOptions = new RequestHeaders({ headers: headers });
+
+    const requestOptions = {
+      headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
+    };
+
+    let postData = {
+      "email": this.myForm.controls['email'].value,
+      "password" : this.myForm.controls['password'].value
+    }; 
+
+
+    this.http.post('http://18.171.19.26/login/?format=json', postData, requestOptions)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
+      this.goHomePage();
+  }
 }

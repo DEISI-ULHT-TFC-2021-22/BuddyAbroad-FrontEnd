@@ -35,10 +35,10 @@
         "type": "input",
         "options": {
             "label": "password",
-            "placeholder": "Minimum 6 characters",
+            "placeholder": "Minimum 8 characters",
             "required": true,
             "type" : "password",
-            "minLength": 6
+            "minLength": 8
         }
     },
     {

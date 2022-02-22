@@ -250,16 +250,17 @@ export class NewRegisterPage implements OnInit {
         console.log(error);
       });
 
-    this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions).pipe(
-      catchError(this.handleError)
-    )
+    this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions)
+    //.pipe(
+     // catchError(this.handleError)
+    //)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
       });
 
-      this.confirmation();
+    this.confirmation();
   }
 
   async confirmation() {
@@ -288,10 +289,8 @@ export class NewRegisterPage implements OnInit {
             "email": this.myForm.controls['email'].value,
             "code" : res.verificationCode
           }; 
-          this.http.post('http://18.171.19.26/confirmAccount/?format=json', postData, requestOptions).pipe(
-            catchError(this.handleError)
-          )
-      .subscribe(data => {
+          this.http.post('http://18.171.19.26/confirmAccount/?format=json', postData, requestOptions)
+          .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
@@ -314,5 +313,5 @@ export class NewRegisterPage implements OnInit {
     } else {
       return Observable.throw(error);
     }
-}
+  }
 }

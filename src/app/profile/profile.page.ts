@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FireStorageService} from '../fire-storage.service';
 import {Router} from '@angular/router';
-import firebase from 'firebase';
-import {AngularFirestore} from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +12,8 @@ export class ProfilePage implements OnInit {
   public user;
 
   constructor(
-      public fireStorageService: FireStorageService,
-      public router: Router, public db: AngularFirestore) {
+      
+      public router: Router) {
   }
 
   ngOnInit() {
@@ -27,9 +25,8 @@ export class ProfilePage implements OnInit {
       rating: '0',
       image: '/assets/addProfilePic.jpg',
     }
-    this.fireStorageService.getUserDocInfo().subscribe((data) => {
-      this.user = data;
-    });
+    
+   
   }
 
 }

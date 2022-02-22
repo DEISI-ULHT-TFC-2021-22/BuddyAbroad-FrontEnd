@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FireStorageService} from '../fire-storage.service';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 
@@ -18,8 +16,7 @@ export class PlanVisitPage implements OnInit {
 
 
     constructor(private router: Router, private navCtrl: NavController,
-                public fireStorageService: FireStorageService,
-                private route: ActivatedRoute, public db: AngularFirestore, private formBuilder: FormBuilder,) {
+                private route: ActivatedRoute, private formBuilder: FormBuilder,) {
     }
 
     ngOnInit() {
@@ -51,11 +48,11 @@ export class PlanVisitPage implements OnInit {
             desiredLanguage: value.desiredLanguage,
 
         };
-        await this.fireStorageService.createDesiredTrip(desiredTrip).then(
+        /*await this.fireStorageService.createDesiredTrip(desiredTrip).then(
             () => {
                 this.router.navigate(['/buy-visit/',this.targetTripId]);
             }
-        );
+        );*/
     }
 
     goback() {

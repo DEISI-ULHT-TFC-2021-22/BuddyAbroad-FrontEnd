@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+//import {AngularFireAuth} from '@angular/fire/auth';
+//import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {switchMap, map} from 'rxjs/operators';
-import firebase from 'firebase';
+//import firebase from 'firebase';
 import {HomeTripCardsModel} from './shared/homeTripCards.model';
 
 export interface User {
@@ -14,7 +14,7 @@ export interface User {
 }
 
 export interface Message {
-    createdAt: firebase.firestore.FieldValue;
+    //createdAt: firebase.firestore.FieldValue;
     id: string;
     from: string;
     msg: string;
@@ -28,14 +28,16 @@ export interface Message {
 export class ChatService {
     currentUser: User = null;
 
-    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+    constructor() {
+        /*
         this.afAuth.onAuthStateChanged(user => {
            //  console.log('Changed: ', user);
             this.currentUser = user;
-        });
+        });*/
     }
 
     addChatMessage(msg,targetUser) {
+        /*
         this.afs.collection(this.currentUser.uid).doc(targetUser).set({userId: targetUser})
         this.afs.collection(targetUser).doc(this.currentUser.uid).set({userId: this.currentUser.uid})
         this.afs.collection(targetUser).doc(this.currentUser.uid).collection('messages').add({
@@ -47,9 +49,9 @@ export class ChatService {
             msg,
             from: this.currentUser.uid,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
+        });*/
     }
-
+/*
     getChatMessages(targetId) {
         let users = [];
         return this.getUsers().pipe(
@@ -69,9 +71,9 @@ export class ChatService {
             })
         )
     }
-
+*/
     getUsers() {
-        return this.afs.collection('users').valueChanges({idField: 'uid'}) as Observable<User[]>;
+       // return this.afs.collection('users').valueChanges({idField: 'uid'}) as Observable<User[]>;
     }
 
     getUserForMsg(msgFromId, users: User[]): string {

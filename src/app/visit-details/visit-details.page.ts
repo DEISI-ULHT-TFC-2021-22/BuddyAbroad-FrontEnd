@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FireStorageService} from '../fire-storage.service';
+//import {FireStorageService} from '../fire-storage.service';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable, Subscription} from 'rxjs';
 
 @Component({
@@ -24,12 +23,16 @@ export class VisitDetailsPage implements OnInit {
 
 
     constructor(private router: Router, private navCtrl: NavController,
-                public fireStorageService: FireStorageService,
-                private route: ActivatedRoute, public db: AngularFirestore) {
+                //public fireStorageService: FireStorageService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         const tripId: string = this.route.snapshot.paramMap.get('id');
+        /*
+
+        relacionado com a firebase
+
 
         this.db.collection('users').get()
             .subscribe(querySnapshot => {
@@ -51,6 +54,7 @@ export class VisitDetailsPage implements OnInit {
                     });
                 });
             });
+            */
     }
 
     goback() {

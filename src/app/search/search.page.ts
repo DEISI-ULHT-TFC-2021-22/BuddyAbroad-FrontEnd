@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable, Subscription} from 'rxjs';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 
@@ -13,7 +12,7 @@ export class SearchPage implements OnInit {
     public allHomeTripCards: any = [];
     public allHomeTripCardsBackup: any = [];
 
-    constructor(private router: Router, public db: AngularFirestore) {
+    constructor(private router: Router) {
     }
 
     async ngOnInit() {
@@ -21,12 +20,16 @@ export class SearchPage implements OnInit {
     }
 
     async initializeItems(): Promise<any> {
+        /*
+        relacionado com a firebase
+
         await this.db.collection('users').get()
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     this.getTargetUserTrips(doc.id);
                 });
             });
+        */
         this.allHomeTripCardsBackup = this.allHomeTripCards;
         return this.allHomeTripCards;
     }
@@ -47,12 +50,18 @@ export class SearchPage implements OnInit {
     }
 
     public getTargetUserTrips(targetUser): Subscription {
+       /*
+
+        relacionado com a firebase
+
         return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     this.allHomeTripCards.push(doc.data());
                 });
             });
+            */
+        return;
     }
 
 }

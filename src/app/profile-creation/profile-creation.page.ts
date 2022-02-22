@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NavController} from '@ionic/angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FireStorageService} from '../fire-storage.service';
 import {Observable} from 'rxjs';
-import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {finalize, tap} from 'rxjs/operators';
 
 export interface MyData {
@@ -24,7 +21,7 @@ export class ProfileCreationPage implements OnInit {
   public user;
 
   // Upload Task
-  task: AngularFireUploadTask;
+  //task: AngularFireUploadTask;
 
   // Progress in percentage
   percentage: Observable<number>;
@@ -48,20 +45,20 @@ export class ProfileCreationPage implements OnInit {
 
   public validationsForm: FormGroup;
 
-  private imageCollection: AngularFirestoreCollection<MyData>;
+ // private imageCollection: AngularFirestoreCollection<MyData>;
 
   public imageFilePath;
 
   constructor(private router: Router, private navCtrl: NavController, private formBuilder: FormBuilder,
-              public fireStorageService: FireStorageService, private route: ActivatedRoute,
-              public afs: AngularFirestore, private afStorage: AngularFireStorage
+              private route: ActivatedRoute,
   ) {
     this.isUploading = false;
     this.isUploaded = false;
 
     // Set collection where our documents/ images info will save
-    this.imageCollection = afs.collection<MyData>('TripImages');
-    this.images = this.imageCollection.valueChanges();
+
+    //this.imageCollection = afs.collection<MyData>('TripImages');
+    //this.images = this.imageCollection.valueChanges();
   }
 
   ngOnInit() {
@@ -131,12 +128,12 @@ export class ProfileCreationPage implements OnInit {
         languages: languageToSet,
       };
     }
-    await this.fireStorageService.createProfile(profile).then(
+    /*await this.fireStorageService.createProfile(profile).then(
         () => {
           this.isUploading = this.isUploaded = false
           this.router.navigate(['/tabs/profile']);
         }
-    );
+    );*/
 
   }
 
@@ -181,17 +178,17 @@ export class ProfileCreationPage implements OnInit {
     const customMetadata = {app: 'created trip images'};
 
     // File reference
-    const fileRef = this.afStorage.ref(path);
+    //const fileRef = this.afStorage.ref(path);
 
     // The main task
-    this.task = this.afStorage.upload(path, file, {customMetadata});
+   // this.task = this.afStorage.upload(path, file, {customMetadata});
 
     // Get file progress percentage
-    this.percentage = this.task.percentageChanges();
-    this.snapshot = this.task.snapshotChanges().pipe(
+    //this.percentage = this.task.percentageChanges();
+   /* this.snapshot = this.task.snapshotChanges().pipe(
         finalize(() => {
           // Get uploaded file storage path
-          this.UploadedFileURL = fileRef.getDownloadURL();
+        //  this.UploadedFileURL = fileRef.getDownloadURL();
 
           this.UploadedFileURL.subscribe(resp => {
             this.addImagetoDB({
@@ -208,19 +205,23 @@ export class ProfileCreationPage implements OnInit {
         tap(snap => {
           this.fileSize = snap.totalBytes;
         })
-    )
+    ) 
+    relacionado com a firebase
+    */
   }
 
   addImagetoDB(image: MyData) {
     // Create an ID for document
-    const id = this.afs.createId();
+    //const id = this.afs.createId();
     this.imageFilePath = image.filepath;
     // Set document id with value in database
-    this.imageCollection.doc(id).set(image).then(resp => {
+   /* this.imageCollection.doc(id).set(image).then(resp => {
       console.log(resp);
     }).catch(error => {
       console.log('error ' + error);
     });
+    relacionado com a firebase
+    */ 
   }
 
 }

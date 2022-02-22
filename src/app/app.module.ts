@@ -8,11 +8,6 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,13 +29,8 @@ export const firebaseConfig = {
     imports: [
         BrowserModule,
         IonicModule.forRoot(),
-        AngularFireModule.initializeApp(firebaseConfig),
-        AngularFireAuthModule,
-        AngularFirestoreModule,
-        AngularFireDatabaseModule,
-        AngularFireStorageModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [
         StatusBar,

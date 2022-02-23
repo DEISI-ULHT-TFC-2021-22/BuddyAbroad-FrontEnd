@@ -7,6 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 import FormJSon from '../../assets/login_form.json';
 
@@ -34,7 +35,7 @@ export class NovoLoginPage implements OnInit {
   myForm : FormGroup;
   loginForm = FormJSon;
 
-  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router){
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController){
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -181,9 +182,34 @@ export class NovoLoginPage implements OnInit {
     this.http.post('http://18.171.19.26/login/?format=json', postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
+        console.log(data);
+
+        if(data == "Error: Incorrect username or password!"){
+          this.wrongInput()
+        }
+
+        else{
+          this.goHomePage()
+        }
+
        }, error => {
         console.log(error);
       });
-      this.goHomePage();
   }
+
+
+async wrongInput() {
+  const alert = await this.alertCtrl.create({
+    cssClass: 'loginAlert',
+    header: 'Error!',
+    message: 'Incorrect username or password',
+  });
+
+  await alert.present();
+}
+
+
+
+
+
 }

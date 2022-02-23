@@ -10,6 +10,7 @@ import FormJSon from '../../assets/register_form.json';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { $$ } from 'protractor';
+import { async } from 'rxjs/internal/scheduler/async';
 
 import { throwError } from 'rxjs';
 
@@ -257,7 +258,6 @@ export class NewRegisterPage implements OnInit {
         console.log(error);
       });
 
-    this.confirmation();
   }
 
   async confirmation() {
@@ -314,4 +314,27 @@ export class NewRegisterPage implements OnInit {
       return throwError(error);
     }
   }
+
+  
+  
+  async existingEmail() {
+    const toast = await this.toastCtrl.create({
+      message: this.myForm.controls['email'].value + ' already exists',
+      duration: 5000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
+  async wrongCode() {
+    const toast = await this.toastCtrl.create({
+      message: 'Wrong verification code. Try again',
+      duration: 5000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
 }
+
+

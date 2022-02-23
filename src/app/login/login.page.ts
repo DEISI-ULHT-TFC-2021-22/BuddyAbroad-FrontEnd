@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {FireAuthService} from '../fire-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +23,6 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
-      private authService: FireAuthService,
       private formBuilder: FormBuilder,
       private router: Router
   ) {
@@ -44,13 +42,13 @@ export class LoginPage implements OnInit {
   }
 
   public async tryLogin(value: { email: string, password: string }): Promise<void> {
-    return await this.authService.doLogin(value)
+    /*return await this.authService.doLogin(value)
         .then(res => {
           this.router.navigate(['/tabs/home']);
         }, err => {
           this.errorMessage = err.message;
           console.log(err);
-        });
+        });*/
   }
 
   public goRegisterPage(): void {

@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IonContent, NavController} from '@ionic/angular';
 import {Message, ChatService} from '../chat.service';
-import {FireStorageService} from '../fire-storage.service';
+
 
 
 @Component({
@@ -19,9 +19,9 @@ export class ChatPage implements OnInit {
     newMsg = '';
 
     constructor(private route: ActivatedRoute, private chatService: ChatService, private router: Router,
-                private navCtrl: NavController, public fireStorageService: FireStorageService) {
+                private navCtrl: NavController) {
     }
-
+/*
     async ngOnInit() {
         const contactId: string = this.route.snapshot.paramMap.get('id');
         await this.initializeItems(contactId);
@@ -40,6 +40,11 @@ export class ChatPage implements OnInit {
             this.content.scrollToBottom();
         });
     }
+*/
+    ngOnInit(): void {
+        
+    }
+
 
     goback() {
         this.navCtrl.pop();

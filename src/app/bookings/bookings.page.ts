@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {FireStorageService} from '../fire-storage.service';
+
 
 
 @Component({
@@ -13,11 +12,11 @@ export class BookingsPage implements OnInit {
     public homeTripCards;
     type: string;
 
-    constructor(private router: Router, public db: AngularFirestore, public fireStorageService: FireStorageService,) {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
         this.type = 'booked';
-        this.homeTripCards = this.fireStorageService.getUserBookedTrips();
+        //this.homeTripCards = this.fireStorageService.getUserBookedTrips();
     }
 }

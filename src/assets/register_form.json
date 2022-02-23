@@ -1,5 +1,5 @@
 [
-        {
+    {
         "key": "email",
         "type": "input",
         "format": "email",
@@ -37,7 +37,7 @@
             "label": "password",
             "placeholder": "Minimum 8 characters",
             "required": true,
-            "type" : "password",
+            "type": "password",
             "minLength": 8
         }
     },

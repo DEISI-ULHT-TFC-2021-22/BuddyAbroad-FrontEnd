@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable, Subscription} from 'rxjs';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
-import {FireStorageService} from '../fire-storage.service';
-import firebase from 'firebase';
-import functions = firebase.functions;
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -22,13 +18,13 @@ export class HomePage implements OnInit {
 
 
 
-    constructor(public fireStorageService: FireStorageService, private router: Router, public db: AngularFirestore) {
+    constructor(private router: Router) {
     }
 
     async ngOnInit() {
-        await this.initializeItems();
+        //await this.initializeItems();
     }
-
+/*
     async initializeItems(): Promise<any> {
         await this.db.collection('users').get()
             .subscribe(querySnapshot => {
@@ -50,5 +46,5 @@ export class HomePage implements OnInit {
                     this.allHomeTripCards.reverse()
                 });
             });
-    }
+    }*/
 }

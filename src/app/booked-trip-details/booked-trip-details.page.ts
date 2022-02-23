@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NavController} from '@ionic/angular';
-import {FireStorageService} from '../fire-storage.service';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 import {Observable} from 'rxjs';
 
@@ -23,11 +21,11 @@ export class BookedTripDetailsPage implements OnInit {
     public userId;
 
     constructor(private router: Router, private navCtrl: NavController,
-                public fireStorageService: FireStorageService,
-                private route: ActivatedRoute, public db: AngularFirestore) {
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        /*
         const tripId: string = this.route.snapshot.paramMap.get('id');
 
         this.db.collection('users').get()
@@ -49,6 +47,7 @@ export class BookedTripDetailsPage implements OnInit {
                     });
                 });
             });
+            */
     }
 
     goback() {

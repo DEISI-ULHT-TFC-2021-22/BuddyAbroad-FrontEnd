@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
-import {FireStorageService} from '../fire-storage.service';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import firebase from 'firebase';
+
 
 @Component({
     selector: 'app-buy-visit',
@@ -26,13 +24,12 @@ export class BuyVisitPage implements OnInit {
     public savedTripId: string = this.route.snapshot.paramMap.get('id');
 
     constructor(private router: Router, private navCtrl: NavController,
-                public fireStorageService: FireStorageService,
-                private route: ActivatedRoute, public db: AngularFirestore) {
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         const tripId: string = this.route.snapshot.paramMap.get('id');
-
+/*
         this.db.collection('users').get()
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
@@ -54,12 +51,13 @@ export class BuyVisitPage implements OnInit {
                         this.participants = data.desiredParticipants;
                     });
             });
+   */
     }
 
     goback() {
         this.navCtrl.pop();
     }
-
+/*
     async onSubmit() {
         await this.fireStorageService.buyTrip(this.savedTripId).then(
             () => {
@@ -67,6 +65,7 @@ export class BuyVisitPage implements OnInit {
             }
         );
     }
+*/
 
     public calculatePrice(): any {
         // console.log('order total_', this.orderTotal, 'price _', this.price, 'parti', this.participants);

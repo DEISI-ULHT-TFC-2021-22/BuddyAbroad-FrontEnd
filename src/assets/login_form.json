@@ -1,5 +1,5 @@
 [
-        {
+    {
         "key": "email",
         "type": "input",
         "format": "email",
@@ -16,7 +16,7 @@
             "label": "password",
             "placeholder": "Password",
             "required": true,
-            "type" : "password"
+            "type": "password"
         }
     }
 ]

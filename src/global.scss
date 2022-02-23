@@ -93,3 +93,13 @@ ion-header {
 .picker-button.sc-ion-picker-md, .picker-button.activated.sc-ion-picker-md {
   color: #feaa00;
 }
+
+.loginAlert {
+  .alert-head {
+    text-align: center;
+  }
+  .alert-message {
+    text-align: center;
+  }
+  transform: scale(1.2);
+}

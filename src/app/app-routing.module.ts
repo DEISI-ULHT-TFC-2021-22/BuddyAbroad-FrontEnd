@@ -62,6 +62,15 @@ const routes: Routes = [
     path: 'new-register',
     loadChildren: () => import('./new-register/new-register.module').then(m => m.NewRegisterPageModule)
 },
+  {
+    path: 'new-profile',
+    loadChildren: () => import('./new-profile/new-profile.module').then( m => m.NewProfilePageModule)
+  },
+  {
+    path: 'new-profile-creation',
+    loadChildren: () => import('./new-profile-creation/new-profile-creation.module').then( m => m.NewProfileCreationPageModule)
+  },
+
 ];
 
 @NgModule({

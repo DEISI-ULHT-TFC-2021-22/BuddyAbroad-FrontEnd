@@ -1,0 +1,76 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="color:#F0F0F0;">
+    <div class="container">
+
+      <div class="container__image">
+          <img src="assets/logo sem fundo.png">
+      </div>
+
+      <div class="container__text">
+          <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;"></ion-title>
+      </div>
+  </div>
+
+  <ion-buttons slot="end">
+    <ion-button routerLink="/messages/">
+        <ion-icon name="chatbox-ellipses" class="belllogo" ></ion-icon>
+    </ion-button>
+    <ion-button>
+        <ion-icon name="notifications" class="belllogo"></ion-icon>
+    </ion-button>
+</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="avatarCard">
+        <ion-avatar>
+            <img src="assets/addProfilePic.jpg" alt="profile picture">
+        </ion-avatar>
+  </div>
+
+  <div class="center">
+    <h1>{{ user.name }}</h1>
+  </div>
+
+  <div class="row">
+    <ion-item lines="none">
+        <ion-label class="center">
+            <h2>Speaks</h2>
+            <ion-list *ngFor="let language of user.languages">
+            </ion-list>
+        </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label class="center">
+            <h2>Interests</h2>
+            <ion-list *ngFor="let interest of user.interests">
+            </ion-list>
+        </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label class="center">
+            <h2>Rating</h2>
+            <p> {{ user.rating }}
+                <ion-icon name="star"></ion-icon>
+            </p>
+        </ion-label>
+    </ion-item>
+</div>
+
+
+  <div>
+    <ion-label class="descriptionContainer">
+      <h2>Description</h2>
+      <p>{{ user.description }}</p>
+    </ion-label>
+  </div>
+
+
+
+
+
+    <div class="editButtonContainer">
+      <ion-button class="editButton" (click)="goProfileCreationPage()"><p>EDIT PROFILE</p></ion-button>
+    </div>
+</ion-content>

@@ -15,10 +15,60 @@
     <input type="file" (change)="onFileChange($event)" />
   </ion-item>
 <!--<ion-button color="primary" expand="full" (click)="submitForm()">Upload</ion-button>-->
-
 </div>
 
 
+<div class="languages">
+  <ion-item>
+    <ion-label>Languages</ion-label>
+    <ion-select [(ngModel)]="languagesList" multiple="true">
+      <ion-select-option value="langauge1">language1</ion-select-option>
+      <ion-select-option value="langauge2">language2</ion-select-option>
+      <ion-select-option value="langauge3">language3</ion-select-option>
+      <ion-select-option value="langauge4">language4</ion-select-option>
+      <ion-select-option value="langauge5">language5</ion-select-option>
+      <ion-select-option value="langauge6">language6</ion-select-option>
+      <ion-select-option value="langauge7">language7</ion-select-option>
+      <ion-select-option value="langauge8">language8</ion-select-option>
+      <ion-select-option value="langauge9">language9</ion-select-option>
+      <ion-select-option value="langauge10">language10</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
+
+<p>{{languagesList}}</p>
+
+
+<div class="interests">
+  <ion-item>
+    <ion-label>Interests</ion-label>
+    <ion-select [(ngModel)]="InterestsList" multiple="true">
+      <ion-select-option value="interest1">interest1</ion-select-option>
+      <ion-select-option value="interest2">interest2</ion-select-option>
+      <ion-select-option value="interest3">interest3</ion-select-option>
+      <ion-select-option value="interest4">interest4</ion-select-option>
+      <ion-select-option value="interest5">interest5</ion-select-option>
+      <ion-select-option value="interest6">interest6</ion-select-option>
+      <ion-select-option value="interest7">interest7</ion-select-option>
+      <ion-select-option value="interest8">interest8</ion-select-option>
+      <ion-select-option value="interest9">interest9</ion-select-option>
+      <ion-select-option value="interest10">interest10</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
+
+<p>{{InterestsList}}</p>
+
+<div class="description">
+  <ion-item>
+    <ion-label>Comment</ion-label>
+    <ion-textarea clearOnEdit={true} maxlength=500 autoGrow="true"></ion-textarea>
+  </ion-item>
+</div>
+
+<div class="editButtonContainer">
+  <ion-button class="editButton"><p>Confirm</p></ion-button>
+</div>
 
 
 </ion-content>

@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+//import {FireAuthService} from '../fire-auth.service';
+//import {FireStorageService} from '../fire-storage.service';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { AlertController } from '@ionic/angular';
 
 import FormJSon from '../../assets/register_form.json';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { $$ } from 'protractor';
-import { async } from 'rxjs/internal/scheduler/async';
+//import { async } from 'rxjs/internal/scheduler/async';
 
-import { throwError } from 'rxjs';
-
+import { ToastController } from '@ionic/angular';
 
 export interface Options {
   label?: string;
@@ -45,7 +46,7 @@ export class NewRegisterPage implements OnInit {
   myForm: FormGroup;
   registerForm = FormJSon;
 
-  constructor(private fb: FormBuilder, private alertCtrl: AlertController, public http: HttpClient, private route: Router) {
+  constructor(private fb: FormBuilder, private alertCtrl: AlertController, public http: HttpClient, private route: Router, private toastCtrl: ToastController) {
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -148,6 +149,10 @@ export class NewRegisterPage implements OnInit {
     this.route.navigate(['/novo-login']);
   }
 
+  public goRegisterPage(): void {
+    this.route.navigate(['/new-register']);
+  }
+
   /* public goHttp(): void {
      
      this.http.get('http://18.171.19.26/users/')
@@ -244,6 +249,7 @@ export class NewRegisterPage implements OnInit {
     this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
+        console.log(data);
       }, error => {
         console.log(error);
       });
@@ -254,6 +260,17 @@ export class NewRegisterPage implements OnInit {
       //)
       .subscribe(data => {
         console.log(data['_body']);
+        console.log(data);
+
+        if (data == "Error:Username already exists!") {
+          this.existingEmail()
+          this.goRegisterPage()
+        }
+
+        else {
+          this.confirmation();
+        }
+
       }, error => {
         console.log(error);
       });
@@ -287,15 +304,24 @@ export class NewRegisterPage implements OnInit {
             "code": res.verificationCode
           };
 
-          
           this.http.post('http://18.171.19.26/confirmAccount/?format=json', postData, requestOptions)
             .subscribe(data => {
               console.log(data['_body']);
+              console.log(data);
+
+              if (data == "Error: Code Mismatch!") {
+                //console.log("pls man")
+                this.wrongCode()
+                this.confirmation()
+              }
+
+              else {
+                this.goLogInPage();
+              }
+
             }, error => {
               console.log(error);
             });
-            
-          this.goLogInPage();
         }
       }]
     });
@@ -315,8 +341,8 @@ export class NewRegisterPage implements OnInit {
     }
   }
 
-  
-  
+
+
   async existingEmail() {
     const toast = await this.toastCtrl.create({
       message: this.myForm.controls['email'].value + ' already exists',
@@ -336,5 +362,4 @@ export class NewRegisterPage implements OnInit {
   }
 
 }
-
 

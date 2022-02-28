@@ -234,7 +234,6 @@ export class NewRegisterPage implements OnInit {
       "phone": this.myForm.controls['mobile phone'].value,
       "image": null,
       "description": "",
-      "age": 37,
       "rating": 4,
       "tourcount": 8,
       "guide": null

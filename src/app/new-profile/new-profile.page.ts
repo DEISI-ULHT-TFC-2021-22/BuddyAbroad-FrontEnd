@@ -12,7 +12,7 @@ export class NewProfilePage implements OnInit {
   constructor(private route : Router, private http : HttpClient) { }
 
   ngOnInit() {
-    this.sync()
+    this.sync();
   }
 
   user: any = []

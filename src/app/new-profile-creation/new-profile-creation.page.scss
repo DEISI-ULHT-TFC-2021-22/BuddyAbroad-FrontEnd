@@ -13,3 +13,18 @@ ion-toolbar{
 
 .container {
 }
+
+.editButtonContainer {
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 30rem;
+}
+
+.editButton {
+  --color: #ffff;
+  --background: #feaa00;
+}

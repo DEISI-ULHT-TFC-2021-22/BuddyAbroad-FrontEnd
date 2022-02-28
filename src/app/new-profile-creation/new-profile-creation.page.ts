@@ -10,7 +10,9 @@ import {NavController} from '@ionic/angular';
 })
 export class NewProfileCreationPage implements OnInit {
   private file: File;
-  user: any = []
+  user: any = [];
+  languagesList: string[] = [];
+  InterestsList: string[] = [];
 
   constructor(private router: Router, private navCtrl: NavController, private http: HttpClient) { }
 

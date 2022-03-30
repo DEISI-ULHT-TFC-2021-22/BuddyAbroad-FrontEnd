@@ -32,4 +32,4 @@ npm-debug.log*
 /www
 /plataforms
 
-/.angular
+.angular/cache

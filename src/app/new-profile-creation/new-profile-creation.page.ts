@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
-import {NavController} from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-profile-creation',
@@ -31,18 +31,18 @@ export class NewProfileCreationPage implements OnInit {
   async submitForm() {
     let formData = new FormData();
     formData.append("image: ", this.file, this.file.name)
-    
+
     let postData = {
       "id": 73,
       "interests": [
         {
-            "name": ""
+          "name": ""
         }
       ],
       "languages": [
-          {
-              "name": ""
-          }
+        {
+          "name": ""
+        }
       ],
       "name": this.user.name,
       "email": this.user.email,
@@ -53,19 +53,42 @@ export class NewProfileCreationPage implements OnInit {
       "rating": 5,
       "tourcount": 8,
       "guide": null
-    }; 
+    };
 
     this.http.put("http://18.171.19.26/users/73", postData)
-    .subscribe((response) => console.log(response))
+      .subscribe((response) => console.log(response))
   }
 
 
-sync() {
-  this.http.get('http://18.171.19.26/users/72')
-  .subscribe(data => {
-    console.log(data)
-    this.user = data;
-  })
-}
+  sync() {
+    this.http.get('http://18.171.19.26/users/72')
+      .subscribe(data => {
+        console.log(data)
+        this.user = data;
+      })
+  }
+
+  async confirmChanges() {
+    //let formData = new FormData();
+    //formData.append("image: ", this.file, this.file.name)
+
+    let postData = {
+      "id": 73,
+      "interests": this.InterestsList,
+      "languages": this.languagesList,
+      "name": this.user.name,
+      "email": this.user.email,
+      "dob": this.user.dob,
+      "phone": this.user.phone,
+      "image": null,//this.file.name,
+      "description": "",
+      "rating": 5,
+      "tourcount": 8,
+      "guide": null
+    };
+
+    this.http.put("http://18.171.19.26/users/73", postData)
+      .subscribe((response) => console.log(response))
+  }
 
 }

@@ -69,7 +69,15 @@ const routes: Routes = [
   {
     path: 'new-profile-creation',
     loadChildren: () => import('./new-profile-creation/new-profile-creation.module').then( m => m.NewProfileCreationPageModule)
+  },  {
+    path: 'list-interests',
+    loadChildren: () => import('./list-interests/list-interests.module').then( m => m.ListInterestsPageModule)
   },
+  {
+    path: 'list-languages',
+    loadChildren: () => import('./list-languages/list-languages.module').then( m => m.ListLanguagesPageModule)
+  },
+
 
 ];
 

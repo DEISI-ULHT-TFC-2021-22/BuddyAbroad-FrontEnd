@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-profile',
@@ -9,16 +9,22 @@ import {Router} from '@angular/router';
 })
 export class NewProfilePage implements OnInit {
 
-  constructor(private route : Router, private http : HttpClient) { }
-
-  ngOnInit() {
-    this.sync();
+  constructor(private route : Router, private http : HttpClient, router:ActivatedRoute) {
+    router.params.subscribe(val => {
+      this.sync()
+    });
+  }
+  
+  
+  ngOnInit(): void {
+    this.sync()
   }
 
-  user: any = []
+  user: any = [];
+
 
   sync() {
-    this.http.get('http://18.171.19.26/users/72')
+    this.http.get('http://18.171.19.26/users/69')
     .subscribe(data => {
       console.log(data)
       this.user = data;
@@ -28,4 +34,5 @@ export class NewProfilePage implements OnInit {
   public goProfileCreationPage(): void {
     this.route.navigate(['/new-profile-creation']);
   }
+
 }

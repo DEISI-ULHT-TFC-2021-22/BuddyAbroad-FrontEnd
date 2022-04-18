@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="color:#F0F0F0;">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-circle" class="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="save()">
+        <ion-label class="confirm">Confirm</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+
+  <div class="ion-padding-start">
+    <h4 style="display:inline;">Selected Languages</h4>
+    &nbsp;
+    <p class="disclaimer" style="display:inline;">(Select up to 5 Languages)</p>
+    <ion-chip (click)="removeLanguage(select,selectedList)" *ngFor="let select of selectedList" >
+      <ion-label>
+        {{ select }}
+      </ion-label>
+      <ion-icon name="close-outline"  [style.color]="'#fff'"></ion-icon>
+    </ion-chip>
+  </div>
+
+
+  <div class="ion-padding-start">
+    <h4 (click)="toggleLanguages()" >
+      <ion-icon [name]="visibleLanguages ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+      Languages 
+    </h4>
+
+    <div *ngIf="visibleLanguages">
+      <ion-chip (click)="selectLanguage(language,languagesList)" *ngFor="let language of languagesList">
+        <ion-label>
+          {{ language }}
+        </ion-label>
+      <ion-icon name="add"  [style.color]="'#fff'"></ion-icon>
+    </ion-chip>
+    </div>
+    
+  </div>
+
+
+
+
+
+</ion-content>

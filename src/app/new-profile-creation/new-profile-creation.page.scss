@@ -11,8 +11,6 @@ ion-toolbar{
     --border-style: none;
   }
 
-.container {
-}
 
 .editButtonContainer {
   margin: 0;
@@ -27,4 +25,17 @@ ion-toolbar{
 .editButton {
   --color: #ffff;
   --background: #feaa00;
+}
+
+ion-chip {
+	--color: #fff;
+	--background: #feaa00;
+}
+
+.ion-padding-start{
+	padding-bottom: 16px
+}
+
+.container {
+  padding-bottom: 8px;
 }

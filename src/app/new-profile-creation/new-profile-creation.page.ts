@@ -18,8 +18,10 @@ export class NewProfileCreationPage implements OnInit {
   languagesList = [];
   interestsList = [];
   description: string = this.user.description;
+  id = "";
 
   constructor(private route: Router, private navCtrl: NavController, private http: HttpClient, private modalCtrl: ModalController, router:ActivatedRoute) {
+    this.id= this.route.getCurrentNavigation().extras.state.id;
     router.params.subscribe(val => {
       this.sync()
     });
@@ -111,7 +113,7 @@ export class NewProfileCreationPage implements OnInit {
       "guide": this.user.guide
     }; 
 
-    this.http.put("http://18.171.19.26/users/97", postData)
+    this.http.put(`http://18.171.19.26/users/${this.id}`, postData)
     .subscribe((response) => console.log(response))
 
     this.route.navigate(['tabs/home']);
@@ -119,7 +121,7 @@ export class NewProfileCreationPage implements OnInit {
 
 
 sync() {
-  this.http.get("http://18.171.19.26/users/97")
+  this.http.get(`http://18.171.19.26/users/${this.id}`)
   .subscribe(data => {
     console.log(data)
     this.user = data;

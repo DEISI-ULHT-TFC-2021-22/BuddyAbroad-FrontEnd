@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-profile',
@@ -37,7 +37,8 @@ export class NewProfilePage implements OnInit {
   }
 
   public goProfileCreationPage(): void {
-    this.route.navigate(['/new-profile-creation']);
+    let navigationExtras: NavigationExtras = { state: { id: this.user.id } };
+    this.route.navigate(['/new-profile-creation'], navigationExtras,);
   }
 
    test() {

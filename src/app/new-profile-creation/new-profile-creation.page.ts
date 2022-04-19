@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import {ModalController, NavController} from '@ionic/angular';
 import { userInfo } from 'os';
 import { empty } from 'rxjs';
@@ -19,7 +19,11 @@ export class NewProfileCreationPage implements OnInit {
   interestsList = [];
   description: string = this.user.description;
 
-  constructor(private route: Router, private navCtrl: NavController, private http: HttpClient, private modalCtrl: ModalController) { }
+  constructor(private route: Router, private navCtrl: NavController, private http: HttpClient, private modalCtrl: ModalController, router:ActivatedRoute) {
+    router.params.subscribe(val => {
+      this.sync()
+    });
+   }
 
   ngOnInit() {
     this.sync();
@@ -74,10 +78,10 @@ export class NewProfileCreationPage implements OnInit {
 
   test() {
     console.log(this.interestsList);
-    console.log(this.description);
-    console.log(this.user.description);
-    console.log(this.convertToFormat(this.languagesList));
-    
+    //console.log(this.description);
+    //console.log(this.user.description);
+    //console.log(this.convertToFormat(this.languagesList));
+    console.log(this.user.name);
   }
 
   convertToFormat(list){
@@ -107,15 +111,15 @@ export class NewProfileCreationPage implements OnInit {
       "guide": this.user.guide
     }; 
 
-    this.http.put(`http://18.171.19.26/users/${this.user.id}`, postData)
+    this.http.put("http://18.171.19.26/users/97", postData)
     .subscribe((response) => console.log(response))
 
-    this.route.navigate(['tabs/profile']);
+    this.route.navigate(['tabs/home']);
   }
 
 
 sync() {
-  this.http.get('http://18.171.19.26/users/69')
+  this.http.get("http://18.171.19.26/users/97")
   .subscribe(data => {
     console.log(data)
     this.user = data;

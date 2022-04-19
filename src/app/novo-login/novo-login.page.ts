@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -34,6 +34,7 @@ export class NovoLoginPage implements OnInit {
 
   myForm : FormGroup;
   loginForm = FormJSon;
+  email = ""
 
   constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController){
     console.log(FormJSon);
@@ -73,7 +74,10 @@ export class NovoLoginPage implements OnInit {
   }
 
   public goHomePage(): void{
-    this.route.navigate(['//tabs/home']);
+    //this.route.navigate(['//tabs/profile']);
+    let navigationExtras: NavigationExtras = { state: { email: this.email = this.myForm.controls['email'].value } };
+    console.log(this.email)
+    this.route.navigate(['//tabs/profile'], navigationExtras,);
   }
 
 
@@ -82,11 +86,9 @@ export class NovoLoginPage implements OnInit {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     //const requestOptions = new RequestHeaders({ headers: headers });
-
     const requestOptions = {
       headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
     };
-
     let postData = {
       "id": 11,
       "interests": [
@@ -111,7 +113,6 @@ export class NovoLoginPage implements OnInit {
       "tourcount": 10,
       "guide": null
     };
-
     this.http.post("http://18.171.19.26/users/?format=json", postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
@@ -125,11 +126,9 @@ export class NovoLoginPage implements OnInit {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     //const requestOptions = new RequestHeaders({ headers: headers });
-
     const requestOptions = {
       headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
     };
-
     let postData = {
       "id": 0,
       "interests": [
@@ -154,7 +153,6 @@ export class NovoLoginPage implements OnInit {
       "tourcount": 8,
       "guide": null
     }; 
-
     this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
@@ -177,6 +175,8 @@ export class NovoLoginPage implements OnInit {
       "email": this.myForm.controls['email'].value,
       "password" : this.myForm.controls['password'].value
     }; 
+
+    
 
 
     this.http.post('http://18.171.19.26/login/?format=json', postData, requestOptions)
@@ -207,9 +207,6 @@ async wrongInput() {
 
   await alert.present();
 }
-
-
-
 
 
 }

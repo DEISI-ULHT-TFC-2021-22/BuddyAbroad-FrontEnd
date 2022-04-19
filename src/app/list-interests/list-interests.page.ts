@@ -18,7 +18,7 @@ export class ListInterestsPage implements OnInit {
 
 
   sportsList = ["Sports","Baseball","Basketball","Volleyball","Cycling",
-  "Soccer","Football","Volleyball","Jogging","Surfing","Swimming","Golf","Marathon running",
+  "Soccer","Football","Jogging","Surfing","Swimming","Golf","Marathon running",
   "Martial arts","Karate","Gymnastics","Running","Tennis","Skiing","Ice skating"
   ];
 
@@ -147,13 +147,6 @@ export class ListInterestsPage implements OnInit {
     this.visibleFood = !this.visibleFood
   }
 
-  sync() {
-    this.http.get('http://18.171.19.26/users/69')
-    .subscribe(data => {
-      console.log(data)
-      this.user = data;
-    })
-  }
 
 
 }

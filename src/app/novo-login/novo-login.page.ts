@@ -6,10 +6,11 @@ import { NavigationExtras, Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 import FormJSon from '../../assets/login_form.json';
+import { ForgotPage } from '../forgot/forgot.page';
 
 
 export interface Options {
@@ -36,7 +37,7 @@ export class NovoLoginPage implements OnInit {
   loginForm = FormJSon;
   email = ""
 
-  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController){
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController, private modalCtrl: ModalController){
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -203,6 +204,49 @@ async wrongInput() {
     cssClass: 'loginAlert',
     header: 'Error!',
     message: 'Incorrect username or password',
+  });
+
+  await alert.present();
+}
+
+async goForgotPage(email: String) {
+  const modal = await this.modalCtrl.create({
+    component: ForgotPage,
+    componentProps: { 'value' : email },
+    cssClass: 'listaInteresses'
+  });
+  await modal.present();
+  modal.onDidDismiss().then((data) => {
+    const user = data['data']; // Here's your selected user!
+    console.log(user);
+});
+}
+
+async emailPopUp() {
+  const alert = await this.alertCtrl.create({
+    cssClass: 'loginAlert',
+    header: 'Password Recovery',
+    message: 'Please insert your email:',
+    inputs: [{
+      type: 'text', name: 'emailRecovery', placeholder: 'Email'
+    }],
+    buttons: [{
+      cssClass: 'buttonAlert',
+      text: 'SUBMIT', handler: (res) => {
+        let postData = {
+          "username" : res.emailRecovery
+        };
+        this.http.post('http://18.171.19.26/forgotPassword/?format=json', postData)
+        .subscribe(data => {
+        console.log(data['_body']);
+        console.log(data);
+
+      }, error => {
+        console.log(error);
+      });
+      this.goForgotPage(res.emailRecovery);
+      }
+    }]
   });
 
   await alert.present();

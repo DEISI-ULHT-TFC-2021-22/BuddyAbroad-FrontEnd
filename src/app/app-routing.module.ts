@@ -77,7 +77,11 @@ const routes: Routes = [
   {
     path: 'list-languages',
     loadChildren: () => import('./list-languages/list-languages.module').then( m => m.ListLanguagesPageModule)
+  },  {
+    path: 'forgot',
+    loadChildren: () => import('./forgot/forgot.module').then( m => m.ForgotPageModule)
   },
+
 
 
 ];

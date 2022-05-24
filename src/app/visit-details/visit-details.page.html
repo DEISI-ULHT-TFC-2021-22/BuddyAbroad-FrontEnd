@@ -9,15 +9,32 @@
 </ion-header>
 
 <ion-content>
-    <ion-img style="width: 100%" src="{{trip?.image}}"></ion-img>
+    <ion-img style="width: 100%" src="{{image}}"></ion-img>
     <div style="padding: 3%">
 
         <div style="margin-bottom: 2%">
-            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{trip?.name}}</ion-text>
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{tripName}}</ion-text>
         </div>
 
         <ion-text style="margin-bottom: 2%;font:normal 15px OpenSans-Regular;color: #3D3D3D;">
-            {{trip?.description}}
+            {{tripDescription}}
+        </ion-text>
+    </div>
+</ion-content>
+
+
+
+<!--
+<ion-content>
+    <ion-img style="width: 100%" src="{{card.imageURL}}"></ion-img>
+    <div style="padding: 3%">
+
+        <div style="margin-bottom: 2%">
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{card.name}}</ion-text>
+        </div>
+
+        <ion-text style="margin-bottom: 2%;font:normal 15px OpenSans-Regular;color: #3D3D3D;">
+            {{card.description}}
         </ion-text>
 
         <div style="margin-top: 5%">
@@ -29,8 +46,8 @@
                     <ion-col>Group size</ion-col>
                 </ion-row>
                 <ion-row style="text-align:center">
-                    <ion-col class="downCol">{{trip?.time}}</ion-col>
-                    <ion-col class="downCol">{{trip?.size}}</ion-col>
+                    <ion-col class="downCol">{{card.duration}} min</ion-col>
+                    <ion-col class="downCol">{{card.maxsize}}</ion-col>
                 </ion-row>
             </ion-grid>
             <ion-grid style="width:100%;margin-top: 2%">
@@ -48,7 +65,7 @@
 
         <br>
         <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">
-            Location: {{trip?.location}}
+            Location: {{card.locationName}}
         </ion-text>
 
         <div style="margin-top: 5%">
@@ -75,10 +92,10 @@
     </div>
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border" *ngFor="let card of allTripCards">
     <ion-toolbar class="footerBar" color="backgrould">
         <ion-title class="footerText" style="font:bold 15px OpenSans-Bold;color: #3D3D3D;">From
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip?.price}}
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{card.price}}
                 €</span>
             per person
         </ion-title>
@@ -91,3 +108,4 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-footer>
+-->

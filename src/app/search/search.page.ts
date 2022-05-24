@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {map, Observable, Subscription} from 'rxjs';
+import { environment } from 'src/environments/environment';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 
 @Component({
@@ -9,18 +11,42 @@ import {HomeTripCardsModel} from '../shared/homeTripCards.model';
     styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-    public allHomeTripCards: any = [];
-    public allHomeTripCardsBackup: any = [];
 
-    constructor(private router: Router) {
+    public allTripCards: any = [];
+
+    constructor(
+        private router: Router, 
+        private route: ActivatedRoute, 
+        private http: HttpClient, 
+        ) {
+        /*route.params.subscribe(val => {
+            this.getAllTrips()
+        });*/
     }
 
+    ngOnInit() {                
+        this.getAllTrips();
+    }
+
+    getAllTrips() {
+        this.http.get<any[]>(`${environment.apiUrl}trips/`)
+            .subscribe(response => {
+                response.forEach(card => {
+                    this.allTripCards.push(card);
+                });                
+            });
+            
+        console.log(this.allTripCards);
+    }
+    
+
+    /*
     async ngOnInit() {
         await this.initializeItems();
     }
 
     async initializeItems(): Promise<any> {
-        /*
+        
         relacionado com a firebase
 
         await this.db.collection('users').get()
@@ -29,7 +55,7 @@ export class SearchPage implements OnInit {
                     this.getTargetUserTrips(doc.id);
                 });
             });
-        */
+        
         this.allHomeTripCardsBackup = this.allHomeTripCards;
         return this.allHomeTripCards;
     }
@@ -50,7 +76,7 @@ export class SearchPage implements OnInit {
     }
 
     public getTargetUserTrips(targetUser): Subscription {
-       /*
+       
 
         relacionado com a firebase
 
@@ -60,8 +86,9 @@ export class SearchPage implements OnInit {
                     this.allHomeTripCards.push(doc.data());
                 });
             });
-            */
+            
         return;
     }
+    */
 
 }

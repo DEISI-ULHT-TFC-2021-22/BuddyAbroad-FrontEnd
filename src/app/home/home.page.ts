@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-home',
@@ -15,15 +17,37 @@ export class HomePage implements OnInit {
     public allHomeTripCardsBackup: any = [];
     public labels: any =['Local Culture','Sightseeing Tours']
 
+    public allTripCards: any = [];
 
 
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private http: HttpClient) {
     }
 
-    async ngOnInit() {
+    ngOnInit() {
         //await this.initializeItems();
+        this.getAllTrips();
     }
+
+    getAllTrips() {
+        this.http.get<any[]>(`${environment.apiUrl}trips/`)
+            .subscribe(response => {
+                response.forEach(card => {
+                    this.allTripCards.push(card);
+                });                
+            });
+            
+        //console.log(this.allTripCards);
+    }
+
+    teste() {
+        this.http.post(`${environment.apiUrl}postTripImage/`, {
+            "file": "/assets/toptrip1.jpg"
+        }).subscribe(response => {
+            console.log(response);
+        });
+    }
+
 /*
     async initializeItems(): Promise<any> {
         await this.db.collection('users').get()

@@ -21,6 +21,100 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
+
+
+<ion-content>
+    <div class="container-home">
+        <div class="card-container">
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="assets/camera-icon.svg" class="icon"></ion-img>                
+                    <ion-card-title>Find Tour</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="assets/lightbulb-icon.svg" class="icon"></ion-img>                
+                    <ion-card-title>Tailor Tour</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        </div>
+    
+        <div class="card-container">
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="assets/meetbuddy-icon.svg" class="icon"></ion-img>                
+                    <ion-card-title>Meet Buddy</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        
+            <ion-card>
+                <ion-card-header>
+                    <ion-img src="assets/maptour-icon.svg" class="icon"></ion-img>                
+                    <ion-card-title>Tour Book</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        </div>
+
+        <ion-button id="match-button" color="light">Match</ion-button>
+    </div>
+
+    <!--
+    <div class="topTrip">
+        <span class="topTrip-header" style="padding-top: 2px;padding-left: 10px">Top Visits Today</span>
+        <ion-slides [options]="{slidesPerView: 1}">
+            <ion-slide class="top-slide" *ngFor="let card of allTripCards | slice:0:1;"
+                       routerLink="/visit-details/{{card.id}}" color="white">
+                <img style="object-fit: cover;border-radius: 8px;height: 100px" [src]="card.imageURL">
+                <ion-card routerLink="/visit-details/{{card.id}}">
+                    <ion-img [src]="card.imageURL"></ion-img>
+                    <div class="myOverlay">
+                        <p class="price-tag">€ {{card.price}}</p>
+                    </div>
+                    <ion-card-header>
+                        <ion-card-title
+                                style="font: bold 20px OpenSans-Bold;color: #3D3D3D;text-align: left">
+                                {{card.name}}
+                            <ion-chip color="white">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-label>{{card.rating}}</ion-label>
+                            </ion-chip>
+                        </ion-card-title>
+                        <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">
+                            {{card.description}}</p>
+                    </ion-card-header>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
+-->
+    <p class="topTrip-header">Top Visits Today</p>
+    <!-- <ion-button (click)="teste()">aqui</ion-button>  -->
+    <ion-slides>
+        <ion-slide *ngFor="let card of allTripCards">
+            <ion-card routerLink="/visit-details/{{card.id}}" color="white" class="slide-card">
+                <ion-img class="slide-card-image" [src]="card.imageURL"></ion-img>
+                <div class="myOverlay">
+                    <p class="price-tag">€ {{card.price}}</p>
+                </div>
+                <div class="title-overlay">
+                    <span style="font: bold 18px OpenSans-Bold;color: #3D3D3D;">{{card.name}}</span>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+
+
+</ion-content>
+    
+
+
+<!--
+
+    OLD TEMPLATE
+
 <ion-content>
     <div class="topTrip">
         <span class="topTrip-header" style="padding-top: 2px;padding-left: 2px"> Top Visits Today</span>
@@ -33,7 +127,7 @@
     </div>
 
     <section style="background-color: #F0F0F0;padding: 2px">
-        <span class="visitsNear-header"> Visits Near You</span>
+        <span class="visitsNear-header">Visits Near You</span>
     </section>
 
     <section>
@@ -68,4 +162,4 @@
         </ion-list>
     </section>
 </ion-content>
-
+-->

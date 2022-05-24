@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
@@ -9,19 +9,13 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
-export const firebaseConfig = {
-    apiKey: 'AIzaSyA2dv29iU-p4iSRjCRSdwYWnBpqLZpZ41o',
-    authDomain: 'buddy-abroad-4e98c.firebaseapp.com',
-    databaseURL: 'https://buddy-abroad-4e98c.firebaseio.com',
-    projectId: 'buddy-abroad-4e98c',
-    storageBucket: 'buddy-abroad-4e98c.appspot.com',
-    messagingSenderId: '857863312606',
-    appId: '1:857863312606:web:6d960cd56f8ee95d821e4f',
-    measurementId: 'G-2P056E62K3'
-};
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -31,6 +25,7 @@ export const firebaseConfig = {
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        SharedModule,
     ],
     providers: [
         StatusBar,
@@ -39,5 +34,8 @@ export const firebaseConfig = {
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
+  
 }
+

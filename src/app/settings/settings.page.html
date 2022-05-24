@@ -51,10 +51,17 @@
             <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon>
         </ion-button>
 
-        <ion-button class="settingsButton" color="white" expand="block" disabled="true">
+        <ion-button class="settingsButton" color="white" expand="block">
             <ion-icon class="settings-logo" name="language"></ion-icon>
-            <ion-label>Language</ion-label>
-            <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon>
+            <ion-label>{{'Language' | customTranslate | async}}</ion-label>
+            <ion-select [(ngModel)]="language" (ionChange)="changeLanguage()">
+                <ion-select-option value="pt">Portuguese</ion-select-option>
+                <ion-select-option value="en">English</ion-select-option>
+                <ion-select-option value="es">Spanish</ion-select-option>
+                <ion-select-option value="fr">French</ion-select-option>
+                <ion-select-option value="it">Italian</ion-select-option>
+            </ion-select>
+            <!-- <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon> -->
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block" (click)="logout()">
@@ -62,10 +69,14 @@
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block">
-            <ion-label style="text-align: center;color: #FF1B1B">Delete Account</ion-label>
+            <!--<ion-label style="text-align: center;color: #FF1B1B">Delete Account</ion-label>-->
+            <ion-label style="text-align: center;color: #FF1B1B">{{ 'Delete Account' | customTranslate | async}}</ion-label>
         </ion-button>
-
 
     </ion-list>
 
+
 </ion-content>
+
+ 
+

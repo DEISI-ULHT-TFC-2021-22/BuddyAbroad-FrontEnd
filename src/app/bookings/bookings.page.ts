@@ -9,8 +9,15 @@ import {Router} from '@angular/router';
     styleUrls: ['./bookings.page.scss'],
 })
 export class BookingsPage implements OnInit {
-    public homeTripCards;
+    //public homeTripCards;
     type: string;
+
+    public allBookedTripsCards: any = [
+        {
+            id: '0',
+            
+        }
+    ]
 
     constructor(private router: Router) {
     }

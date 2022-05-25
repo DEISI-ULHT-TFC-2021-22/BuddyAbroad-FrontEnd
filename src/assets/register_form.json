@@ -1,5 +1,9 @@
 [
+<<<<<<< HEAD
     {
+=======
+        {
+>>>>>>> 38f80ceedbb31066aab1fa225c03ee03c01e68cb
         "key": "email",
         "type": "input",
         "format": "email",
@@ -37,7 +41,11 @@
             "label": "password",
             "placeholder": "Minimum 8 characters",
             "required": true,
+<<<<<<< HEAD
             "type": "password",
+=======
+            "type" : "password",
+>>>>>>> 38f80ceedbb31066aab1fa225c03ee03c01e68cb
             "minLength": 8
         }
     },

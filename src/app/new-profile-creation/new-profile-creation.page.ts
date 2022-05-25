@@ -7,7 +7,6 @@ import { empty } from 'rxjs';
 import { ListInterestsPage } from '../list-interests/list-interests.page';
 import { ListLanguagesPage } from '../list-languages/list-languages.page';
 
-
 @Component({
   selector: 'app-new-profile-creation',
   templateUrl: './new-profile-creation.page.html',
@@ -119,12 +118,13 @@ export class NewProfileCreationPage implements OnInit {
     this.route.navigate(['tabs/home']);
   }
 
-  sync() {
-    this.http.get(`http://18.171.19.26/users/${this.id}`)
-    .subscribe(data => {
-      console.log(data)
-      this.user = data;
-    })  
-  }
+
+sync() {
+  this.http.get(`http://18.171.19.26/users/${this.id}`)
+  .subscribe(data => {
+    console.log(data)
+    this.user = data;
+  })
+}
 
 }

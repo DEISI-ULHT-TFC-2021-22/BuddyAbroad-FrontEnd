@@ -93,7 +93,6 @@ export class NewProfileCreationPage implements OnInit {
   }
 
 
-
   async submitForm() {
     //let formData = new FormData();
     //formData.append("image: ", this.file, this.file.name)

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-profile',
@@ -9,16 +9,27 @@ import {Router} from '@angular/router';
 })
 export class NewProfilePage implements OnInit {
 
-  constructor(private route : Router, private http : HttpClient) { }
+  email = ""
 
-  ngOnInit() {
-    this.sync();
+  constructor(private route : Router, private http : HttpClient, private router:ActivatedRoute) {
+    this.email= this.route.getCurrentNavigation().extras.state.email;
+    router.params.subscribe(val => {
+      this.sync()
+    });
   }
 
-  user: any = []
+  
+  
+  
+  ngOnInit(): void {
+    this.sync()
+  }
+
+  user: any = [];
+
 
   sync() {
-    this.http.get('http://18.171.19.26/users/72')
+    this.http.get(`http://18.171.19.26/usersEmail/${this.email}`)
     .subscribe(data => {
       console.log(data)
       this.user = data;
@@ -26,6 +37,12 @@ export class NewProfilePage implements OnInit {
   }
 
   public goProfileCreationPage(): void {
-    this.route.navigate(['/new-profile-creation']);
+    let navigationExtras: NavigationExtras = { state: { id: this.user.id } };
+    this.route.navigate(['/new-profile-creation'], navigationExtras,);
   }
+
+   test() {
+     console.log(this.email)
+  }
+
 }

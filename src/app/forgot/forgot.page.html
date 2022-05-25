@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="color:#F0F0F0;">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-circle" class="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="image-container">
+    <ion-img class="center" src="/assets/logo sem fundo.png"></ion-img>
+  </div>
+
+    <h1 class="ion-text-center">Changing Password</h1>
+
+    <p>A confirmation email, containing the code that needs to be inserted below (+ a new password), was sent to this email:</p>
+
+    <p>{{value}}</p>
+
+
+  <form [formGroup] = "myForm" (ngSubmit)="save()"> 
+    <ion-item *ngFor="let c of recoveryForm">
+      <ion-label position="stacked">
+        {{ c.options.label }}
+      </ion-label>
+
+      <div [ngSwitch] = "c.type">
+        <ion-input *ngSwitchCase="'input'"  [type] = "c.options.type ? c.options.type : 'text'" [formControlName] = "c.key" [placeholder] = "c.options.placeholder"></ion-input>
+      </div>
+
+    </ion-item>
+
+    <ion-button type="submit" fill="outline" expand="block" [disabled]="!myForm.valid" class="submit-button">
+      Submit
+    </ion-button>
+
+  </form>
+</ion-content>

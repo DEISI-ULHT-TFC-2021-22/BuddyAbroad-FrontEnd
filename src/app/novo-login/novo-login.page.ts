@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 import FormJSon from '../../assets/login_form.json';
+import { ForgotPage } from '../forgot/forgot.page';
 
 
 export interface Options {
@@ -34,8 +35,9 @@ export class NovoLoginPage implements OnInit {
 
   myForm : FormGroup;
   loginForm = FormJSon;
+  email = ""
 
-  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController){
+  constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController, private modalCtrl: ModalController){
     console.log(FormJSon);
     this.myForm = this.fb.group({})
 
@@ -73,7 +75,10 @@ export class NovoLoginPage implements OnInit {
   }
 
   public goHomePage(): void{
-    this.route.navigate(['//tabs/home']);
+    //this.route.navigate(['//tabs/profile']);
+    let navigationExtras: NavigationExtras = { state: { email: this.email = this.myForm.controls['email'].value } };
+    console.log(this.email)
+    this.route.navigate(['//tabs/profile'], navigationExtras,);
   }
 
 
@@ -82,11 +87,9 @@ export class NovoLoginPage implements OnInit {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     //const requestOptions = new RequestHeaders({ headers: headers });
-
     const requestOptions = {
       headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
     };
-
     let postData = {
       "id": 11,
       "interests": [
@@ -111,7 +114,6 @@ export class NovoLoginPage implements OnInit {
       "tourcount": 10,
       "guide": null
     };
-
     this.http.post("http://18.171.19.26/users/?format=json", postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
@@ -125,11 +127,9 @@ export class NovoLoginPage implements OnInit {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     //const requestOptions = new RequestHeaders({ headers: headers });
-
     const requestOptions = {
       headers: new HttpHeaders().append('Accept', 'application/json').append('Content-Type', 'application/json')
     };
-
     let postData = {
       "id": 0,
       "interests": [
@@ -154,7 +154,6 @@ export class NovoLoginPage implements OnInit {
       "tourcount": 8,
       "guide": null
     }; 
-
     this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
       .subscribe(data => {
         console.log(data['_body']);
@@ -177,6 +176,8 @@ export class NovoLoginPage implements OnInit {
       "email": this.myForm.controls['email'].value,
       "password" : this.myForm.controls['password'].value
     }; 
+
+    
 
 
     this.http.post('http://18.171.19.26/login/?format=json', postData, requestOptions)
@@ -208,8 +209,48 @@ async wrongInput() {
   await alert.present();
 }
 
+async goForgotPage(email: String) {
+  const modal = await this.modalCtrl.create({
+    component: ForgotPage,
+    componentProps: { 'value' : email },
+    cssClass: 'listaInteresses'
+  });
+  await modal.present();
+  modal.onDidDismiss().then((data) => {
+    const user = data['data']; // Here's your selected user!
+    console.log(user);
+});
+}
 
+async emailPopUp() {
+  const alert = await this.alertCtrl.create({
+    cssClass: 'loginAlert',
+    header: 'Password Recovery',
+    message: 'Please insert your email:',
+    inputs: [{
+      type: 'text', name: 'emailRecovery', placeholder: 'Email'
+    }],
+    buttons: [{
+      cssClass: 'buttonAlert',
+      text: 'SUBMIT', handler: (res) => {
+        let postData = {
+          "username" : res.emailRecovery
+        };
+        this.http.post('http://18.171.19.26/forgotPassword/?format=json', postData)
+        .subscribe(data => {
+        console.log(data['_body']);
+        console.log(data);
 
+      }, error => {
+        console.log(error);
+      });
+      this.goForgotPage(res.emailRecovery);
+      }
+    }]
+  });
+
+  await alert.present();
+}
 
 
 }

@@ -29,14 +29,14 @@
             <ion-card>
                 <ion-card-header>
                     <ion-img src="assets/camera-icon.svg" class="icon"></ion-img>                
-                    <ion-card-title>Find Tour</ion-card-title>
+                    <ion-card-title>{{'Find Tour' | customTranslate | async}}</ion-card-title>
                 </ion-card-header>
             </ion-card>
         
             <ion-card>
                 <ion-card-header>
                     <ion-img src="assets/lightbulb-icon.svg" class="icon"></ion-img>                
-                    <ion-card-title>Tailor Tour</ion-card-title>
+                    <ion-card-title>{{'Tailor Tour' | customTranslate | async}}</ion-card-title>
                 </ion-card-header>
             </ion-card>
         </div>
@@ -45,19 +45,19 @@
             <ion-card>
                 <ion-card-header>
                     <ion-img src="assets/meetbuddy-icon.svg" class="icon"></ion-img>                
-                    <ion-card-title>Meet Buddy</ion-card-title>
+                    <ion-card-title>{{'Meet Buddy' | customTranslate | async}}</ion-card-title>
                 </ion-card-header>
             </ion-card>
         
             <ion-card>
                 <ion-card-header>
                     <ion-img src="assets/maptour-icon.svg" class="icon"></ion-img>                
-                    <ion-card-title>Tour Book</ion-card-title>
+                    <ion-card-title>{{'Tour Book' | customTranslate | async}}</ion-card-title>
                 </ion-card-header>
             </ion-card>
         </div>
 
-        <ion-button id="match-button" color="light">Match</ion-button>
+        <ion-button id="match-button" color="light">{{'Match' | customTranslate | async}}</ion-button>
     </div>
 
     <!--
@@ -89,7 +89,7 @@
         </ion-slides>
     </div>
 -->
-    <p class="topTrip-header">Top Visits Today</p>
+    <p class="topTrip-header">{{'Top Visits Today' | customTranslate | async}}</p>
     <!-- <ion-button (click)="teste()">aqui</ion-button>  -->
     <ion-slides>
         <ion-slide *ngFor="let card of allTripCards">
@@ -99,7 +99,7 @@
                     <p class="price-tag">€ {{card.price}}</p>
                 </div>
                 <div class="title-overlay">
-                    <span style="font: bold 18px OpenSans-Bold;color: #3D3D3D;">{{card.name}}</span>
+                    <span style="font: bold 18px OpenSans-Bold;color: #3D3D3D;">{{card.name | customTranslate | async}}</span>
                 </div>
             </ion-card>
         </ion-slide>

@@ -24,7 +24,7 @@
         <section class="ion-text-center" *ngIf="!isUploading && !isUploaded">
           <ion-icon style="width: 35px;height: 35px;color: #3D3D3D" name="create-outline"></ion-icon>
           <br>
-          <label style="font-family: OpenSans-Regular">Change Profile Image</label>
+          <label style="font-family: OpenSans-Regular">{{'Change Profile Image'| customTranslate | async}}</label>
           <ion-button color="white" shape="round" style="--box-shadow: none">
             <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
           </ion-button>
@@ -46,7 +46,7 @@
       <ion-card-header>
         <ion-card-title>
           <ion-item>
-            <ion-label position="stacked">Name</ion-label>
+            <ion-label position="stacked">{{'Name' | customTranslate | async}}</ion-label>
             <ion-input formControlName="name" placeholder="{{this.user.name}}"></ion-input>
           </ion-item>
         </ion-card-title>
@@ -54,18 +54,18 @@
 
       <ion-card-content>
         <ion-item class="ion-text-wrap">
-          <ion-label position="stacked">Profile Description</ion-label>
+          <ion-label position="stacked">{{'Profile Description' | customTranslate | async}}</ion-label>
           <ion-input type="text" formControlName="description"
                      placeholder="{{this.user.description}}"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Country</ion-label>
-          <ion-input type="text" formControlName="home" placeholder="{{this.user.home}}"></ion-input>
+          <ion-label position="stacked">{{'Country' | customTranslate | async}}</ion-label>
+          <ion-input type="text" formControlName="home" placeholder="{{this.user.home | customTranslate | async}}"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Spoken Languages</ion-label>
+          <ion-label position="stacked">{{'Spoken Languages' | customTranslate | async}}</ion-label>
           <ion-input type="text" formControlName="languages"
-                     placeholder="{{this.user.languages}}"></ion-input>
+                     placeholder="{{this.user.languages | customTranslate | async}}"></ion-input>
         </ion-item>
       </ion-card-content>
 

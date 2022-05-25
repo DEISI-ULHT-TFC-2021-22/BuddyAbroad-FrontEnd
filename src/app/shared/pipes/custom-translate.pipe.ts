@@ -16,7 +16,7 @@ import { Observable, of } from 'rxjs';
           if (value) {
             return this.customTranslateService
               .translateText(value)
-              .pipe(map((result: any) => result.translated_text));
+              .pipe(map((result: any) => result.TranslatedText));
           } else {
             return of('');
           }

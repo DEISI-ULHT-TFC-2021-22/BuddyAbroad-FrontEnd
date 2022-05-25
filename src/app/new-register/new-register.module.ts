@@ -9,6 +9,7 @@ import { NewRegisterPageRoutingModule } from './new-register-routing.module';
 import { NewRegisterPage } from './new-register.page';
 
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     NewRegisterPageRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
   ],
   declarations: [NewRegisterPage]
 })

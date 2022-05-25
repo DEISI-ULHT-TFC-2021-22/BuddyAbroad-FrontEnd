@@ -7,7 +7,8 @@
             </div>
 
             <div class="container__text">
-                <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Settings
+                <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">
+                    {{'Settings' | customTranslate | async}}
                 </ion-title>
             </div>
         </div>
@@ -29,25 +30,25 @@
     <ion-list>
         <ion-button class="settingsButton" color="white" expand="block">
             <ion-icon class="settings-logo" name="notifications"></ion-icon>
-            <ion-label>Push Notifications</ion-label>
+            <ion-label>{{'Push Notifications' | customTranslate | async}}</ion-label>
             <ion-toggle class="settings-logo-open" color="success" slot="end" checked></ion-toggle>
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block" disabled="true">
             <ion-icon class="settings-logo" name="key"></ion-icon>
-            <ion-label>Change Password</ion-label>
+            <ion-label>{{'Change Password' | customTranslate | async}}</ion-label>
             <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon>
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block" disabled="true">
             <ion-icon class="settings-logo" name="card"></ion-icon>
-            <ion-label>Payment method</ion-label>
+            <ion-label>{{'Payment method' | customTranslate | async}}</ion-label>
             <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon>
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block" href="https://buddy-abroad-landing-page.herokuapp.com/#index">
             <ion-icon class="settings-logo" name="help-circle"></ion-icon>
-            <ion-label>Help / About Us</ion-label>
+            <ion-label>{{'Help / About Us' | customTranslate | async}}</ion-label>
             <ion-icon class="settings-logo-open" name="chevron-forward"></ion-icon>
         </ion-button>
 
@@ -65,7 +66,7 @@
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block" (click)="logout()">
-            <ion-label style="text-align: center">Sign Out</ion-label>
+            <ion-label style="text-align: center">{{'Sign Out' | customTranslate | async}}</ion-label>
         </ion-button>
 
         <ion-button class="settingsButton" color="white" expand="block">

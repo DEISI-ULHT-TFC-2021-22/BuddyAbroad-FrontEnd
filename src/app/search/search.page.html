@@ -30,19 +30,19 @@
             <ion-card *ngFor="let card of allTripCards" routerLink="/visit-details/{{card.id}}">
                 <ion-img [src]="card.imageURL"></ion-img>
                 <div class="myOverlay">
-                    <p class="price-tag">€ {{card.price}}</p>
+                    <p class="price-tag">€ {{card.price | customTranslate | async}}</p>
                 </div>
                 <ion-card-header>
                     <ion-card-title
                             style="font: bold 16px OpenSans-Bold;color: #3D3D3D;text-align: left">
-                            {{card.name}}
+                            {{card.name | customTranslate | async}}
                         <ion-chip color="white">
                             <ion-icon name="star"></ion-icon>
-                            <ion-label>{{card.rating}}</ion-label>
+                            <ion-label>{{card.rating | customTranslate | async}}</ion-label>
                         </ion-chip>
                     </ion-card-title>
                     <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">
-                        {{card.description}}</p>
+                        {{card.description | customTranslate | async}}</p>
                 </ion-card-header>
             </ion-card>
         </ion-list>

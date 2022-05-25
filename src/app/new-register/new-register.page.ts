@@ -12,7 +12,6 @@ import FormJSon from '../../assets/register_form.json';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { $$ } from 'protractor';
-import { async } from 'rxjs/internal/scheduler/async';
 
 import { ToastController } from '@ionic/angular';
 
@@ -362,4 +361,5 @@ export class NewRegisterPage implements OnInit {
   }
 
 }
+
 

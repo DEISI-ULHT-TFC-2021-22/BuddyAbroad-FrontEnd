@@ -9,6 +9,7 @@ import { NovoLoginPageRoutingModule } from './novo-login-routing.module';
 import { NovoLoginPage } from './novo-login.page';
 
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     NovoLoginPageRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
   ],
   declarations: [NovoLoginPage]
 })

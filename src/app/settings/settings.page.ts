@@ -23,22 +23,9 @@ export class SettingsPage implements OnInit {
   }
 
   changeLanguage() {
-    /*localStorage.setItem('previous-lang', localStorage.getItem('lang'));
+    localStorage.setItem('previous-lang', localStorage.getItem('lang'));
     localStorage.setItem('lang', this.language);
-    this.customTranslateService.currentLang.next(this.language);*/
-    console.log(this.teste());
-    
-
-  }
-
-  teste() {
-    this.http.post(`${environment.apiUrl}translate/`, {
-      text: "hello world",
-      sourceLanguageCode: 'en',
-      targetLanguageCode: 'pt',
-      // sourceLanguageCode: this.currentLang.value,
-      // targetLanguageCode: 'en',
-    }).pipe(map((result: Response) => result.json()));
+    this.customTranslateService.currentLang.next(this.language);
   }
 
 }

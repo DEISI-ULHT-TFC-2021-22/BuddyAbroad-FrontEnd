@@ -8,6 +8,7 @@ import { ProfileCreationPageRoutingModule } from './profile-creation-routing.mod
 
 import { ProfileCreationPage } from './profile-creation.page';
 import {FileSizeFormatPipe} from './file-size-format.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {FileSizeFormatPipe} from './file-size-format.pipe';
         FormsModule,
         IonicModule,
         ProfileCreationPageRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule,
     ],
   declarations: [ProfileCreationPage,FileSizeFormatPipe]
 })

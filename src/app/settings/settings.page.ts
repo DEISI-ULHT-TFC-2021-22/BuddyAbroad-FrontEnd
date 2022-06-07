@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import { CustomTranslateService } from '../shared/services/custom-translate.service';
 
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-settings',

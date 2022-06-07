@@ -1,40 +1,41 @@
 <ion-header class="ion-no-border">
     <ion-toolbar style="color:#F0F0F0;">
         <ion-buttons slot="start">
-            <ion-button (click)="goback()">
+            <!-- <ion-button (click)="goback()"> -->
+                <ion-button (click)="close()">
                 <ion-icon name="close-circle" class="close"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-img style="width: 100%" src="{{image}}"></ion-img>
+<!-- <ion-content>
+    <ion-img style="width: 100%" src="{{trip.imageURL}}"></ion-img>
     <div style="padding: 3%">
 
         <div style="margin-bottom: 2%">
-            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{tripName}}</ion-text>
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}</ion-text>
         </div>
 
         <ion-text style="margin-bottom: 2%;font:normal 15px OpenSans-Regular;color: #3D3D3D;">
-            {{tripDescription}}
+            {{trip.description}}
         </ion-text>
     </div>
-</ion-content>
+</ion-content> -->
 
 
 
-<!--
+
 <ion-content>
-    <ion-img style="width: 100%" src="{{card.imageURL}}"></ion-img>
+    <ion-img style="width: 100%" src="{{trip.imageURL}}"></ion-img>
     <div style="padding: 3%">
 
         <div style="margin-bottom: 2%">
-            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{card.name}}</ion-text>
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}</ion-text>
         </div>
 
         <ion-text style="margin-bottom: 2%;font:normal 15px OpenSans-Regular;color: #3D3D3D;">
-            {{card.description}}
+            {{trip.description}}
         </ion-text>
 
         <div style="margin-top: 5%">
@@ -45,9 +46,9 @@
                     <ion-col>Duration</ion-col>
                     <ion-col>Group size</ion-col>
                 </ion-row>
-                <ion-row style="text-align:center">
-                    <ion-col class="downCol">{{card.duration}} min</ion-col>
-                    <ion-col class="downCol">{{card.maxsize}}</ion-col>
+                <ion-row>
+                    <ion-col class="downCol">{{trip.duration}} min</ion-col>
+                    <ion-col class="downCol">{{trip.maxsize}}</ion-col>
                 </ion-row>
             </ion-grid>
             <ion-grid style="width:100%;margin-top: 2%">
@@ -55,9 +56,9 @@
                     <ion-col>Buddy speaks</ion-col>
                     <ion-col>Includes</ion-col>
                 </ion-row>
-                <ion-row style="text-align:center">
-                    <ion-col class="downCol">{{this.userLanguage}}</ion-col>
-                    <ion-col class="downCol">{{trip?.details}}</ion-col>
+                <ion-row>
+                    <ion-col class="downCol">Quechua</ion-col>
+                    <ion-col class="downCol">Viagem a machu picchu</ion-col>
                 </ion-row>
             </ion-grid>
 
@@ -65,7 +66,7 @@
 
         <br>
         <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">
-            Location: {{card.locationName}}
+            Location: {{trip.locationName}}
         </ion-text>
 
         <div style="margin-top: 5%">
@@ -74,14 +75,14 @@
 
         <ion-item lines="none">
             <ion-avatar style="width: 50px;height: 50px" slot="start">
-                <img src="{{this.userImage}}">
+                <img src="/assets/person_buddy.png">
             </ion-avatar>
             <ion-label style="color: #3D3D3D;padding: 2%">
-                <h3 style="font: normal 600 18px OpenSans-Regular;">{{this.userName}}<span
-                        style="font: normal 18px OpenSans-Regular;"> {{this.userRating}}</span>
+                <h3 style="font: normal 600 18px OpenSans-Regular;">Roberto<span
+                        style="font: normal 18px OpenSans-Regular;"> 4</span>
                     <ion-icon style="color: #FEAA00" name="star"></ion-icon>
                 </h3>
-                <p style="font: normal 14px OpenSans-Regular">{{this.userDescription}}</p>
+                <p style="font: normal 14px OpenSans-Regular">O roberto é um bacanolas</p>
             </ion-label>
             <ion-button fill="outline" color="warning" style="text-transform: none;border-radius: 10px"
                         routerLink="/chat/{{this.userId}}">
@@ -92,10 +93,10 @@
     </div>
 </ion-content>
 
-<ion-footer class="ion-no-border" *ngFor="let card of allTripCards">
+<ion-footer class="ion-no-border" style="margin-bottom: 25px;">
     <ion-toolbar class="footerBar" color="backgrould">
         <ion-title class="footerText" style="font:bold 15px OpenSans-Bold;color: #3D3D3D;">From
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{card.price}}
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.price}}
                 €</span>
             per person
         </ion-title>
@@ -108,4 +109,3 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-footer>
--->

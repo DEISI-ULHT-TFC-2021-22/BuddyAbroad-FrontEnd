@@ -24,7 +24,44 @@
 
 
 <ion-content>
+
     <div class="container-home">
+        <ion-slides [options]="slideOptions">
+            <ion-slide>
+                <ion-card class="card-image-home">
+                    <ion-img src="assets/home_img_3.png" class="img-home"></ion-img>                
+                </ion-card>            
+            </ion-slide>
+            
+            <ion-slide>
+                <ion-card class="card-image-home">
+                    <ion-img src="assets/toptrip1.jpg" class="img-home"></ion-img>
+                </ion-card>
+            </ion-slide>    
+    
+    
+            <ion-slide>
+                <ion-card class="card-image-home">
+                    <ion-img src="assets/toptripbackground.jpg" class="img-home"></ion-img>
+                </ion-card>
+            </ion-slide>    
+    
+            <ion-slide>
+                <ion-card class="card-image-home">
+                    <ion-img src="assets/home_img_2.png" class="img-home"></ion-img>
+                </ion-card>
+            </ion-slide>    
+        </ion-slides>
+
+        <p id="slogan">The ultimate exchange of unique experiences</p>
+    
+    </div>
+    
+
+    
+    
+
+    <!-- <div class="container-home">
         <div class="card-container">
             <ion-card>
                 <ion-card-header>
@@ -58,7 +95,7 @@
         </div>
 
         <ion-button id="match-button" color="light">{{'Match' | customTranslate | async}}</ion-button>
-    </div>
+    </div> -->
 
     <!--
     <div class="topTrip">
@@ -91,9 +128,9 @@
 -->
     <p class="topTrip-header">{{'Top Visits Today' | customTranslate | async}}</p>
     <!-- <ion-button (click)="teste()">aqui</ion-button>  -->
-    <ion-slides>
+    <ion-slides class="slides-top-trip">
         <ion-slide *ngFor="let card of allTripCards">
-            <ion-card routerLink="/visit-details/{{card.id}}" color="white" class="slide-card">
+            <ion-card (click)="createTripCards(card)" color="white" class="slide-card">
                 <ion-img class="slide-card-image" [src]="card.imageURL"></ion-img>
                 <div class="myOverlay">
                     <p class="price-tag">€ {{card.price}}</p>
@@ -105,6 +142,20 @@
         </ion-slide>
     </ion-slides>
 
+    <p class="topTrip-header">{{'Visits Near Me' | customTranslate | async}}</p>
+    <ion-slides class="slides-top-trip">
+        <ion-slide *ngFor="let card of allTripCards.reverse()">
+            <ion-card (click)="createTripCards(card)" color="white" class="slide-card">
+                <ion-img class="slide-card-image" [src]="card.imageURL"></ion-img>
+                <div class="myOverlay">
+                    <p class="price-tag">€ {{card.price}}</p>
+                </div>
+                <div class="title-overlay">
+                    <span style="font: bold 18px OpenSans-Bold;color: #3D3D3D;">{{card.name | customTranslate | async}}</span>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
 
 
 </ion-content>

@@ -22,23 +22,25 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-searchbar placeholder="Search" (ionInput)="filterList($event)"></ion-searchbar>
+<!-- <ion-searchbar placeholder="Search" (ionInput)="filterList($event)"></ion-searchbar> -->
+<ion-searchbar placeholder="Search" (ionInput)="filterTrips($event)"></ion-searchbar>
 
 <ion-content>
     <section>
         <ion-list>
-            <ion-card *ngFor="let card of allTripCards" routerLink="/visit-details/{{card.id}}">
+            <!-- <ion-card *ngFor="let card of allTripCards" routerLink="/visit-details/{{card.id}}">   -->
+            <ion-card *ngFor="let card of allTripCards" (click)="createTripCards(card)">
                 <ion-img [src]="card.imageURL"></ion-img>
                 <div class="myOverlay">
-                    <p class="price-tag">€ {{card.price | customTranslate | async}}</p>
+                    <p class="price-tag">€ {{card.price}}</p>
                 </div>
                 <ion-card-header>
                     <ion-card-title
                             style="font: bold 16px OpenSans-Bold;color: #3D3D3D;text-align: left">
-                            {{card.name | customTranslate | async}}
+                            <span id="name-card">{{card.name | customTranslate | async}}</span>
                         <ion-chip color="white">
                             <ion-icon name="star"></ion-icon>
-                            <ion-label>{{card.rating | customTranslate | async}}</ion-label>
+                            <ion-label>{{card.rating}}</ion-label>
                         </ion-chip>
                     </ion-card-title>
                     <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">
@@ -47,7 +49,6 @@
             </ion-card>
         </ion-list>
     </section>
-
 </ion-content>
 
 

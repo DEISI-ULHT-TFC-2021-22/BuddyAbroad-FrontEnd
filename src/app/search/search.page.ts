@@ -4,20 +4,27 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {map, Observable, Subscription} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
+import { ModalController } from '@ionic/angular';
+import { VisitDetailsPage } from '../visit-details/visit-details.page';
+import { compileInjectable } from '@angular/compiler';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.page.html',
     styleUrls: ['./search.page.scss'],
 })
+
 export class SearchPage implements OnInit {
 
     public allTripCards: any = [];
+    public allTripCardsBackup: any = this.allTripCards;
+    tripsList = [];
 
     constructor(
         private router: Router, 
         private route: ActivatedRoute, 
-        private http: HttpClient, 
+        private http: HttpClient,
+        private modalCtrl: ModalController, 
         ) {
         /*route.params.subscribe(val => {
             this.getAllTrips()
@@ -39,6 +46,31 @@ export class SearchPage implements OnInit {
         console.log(this.allTripCards);
     }
     
+    async createTripCards(trip: any) {
+
+        const modal = await this.modalCtrl.create({
+            component: VisitDetailsPage,
+            componentProps: { value: trip },
+          });
+
+        await modal.present();
+    }
+
+    async filterTrips(event) {        
+        const searchTerm = event.srcElement.value;
+
+        if (!searchTerm) {
+            this.allTripCards = this.allTripCardsBackup;
+            return this.allTripCards;
+        }
+
+        this.allTripCards = this.allTripCards.filter(currentTrip => {
+            if (currentTrip.name && searchTerm) {
+                return (currentTrip.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+            }
+        });
+    }
+
 
     /*
     async ngOnInit() {

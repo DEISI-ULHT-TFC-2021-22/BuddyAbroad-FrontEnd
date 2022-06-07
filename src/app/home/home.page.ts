@@ -5,6 +5,9 @@ import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ModalController } from '@ionic/angular';
+import { VisitDetailsPage } from '../visit-details/visit-details.page';
+import {ComponentProps, ModalOptions} from '@ionic/core';
 
 @Component({
     selector: 'app-home',
@@ -19,9 +22,20 @@ export class HomePage implements OnInit {
 
     public allTripCards: any = [];
 
+    slideOptions = {
+        // initialSlide: 0,
+        // slidesPerView: 1,
+        // autoplay: true,
+        // autoplayDisableOnInteraction: false
+        slidesPerView: 1.2,
+        centeredSlides: true,
+        loop: true,
+        spaceBetween: 10,
+        autoplay: true,
+    };
 
 
-    constructor(private router: Router, private http: HttpClient) {
+    constructor(private router: Router, private http: HttpClient, private modalCtrl: ModalController) {
     }
 
     ngOnInit() {
@@ -38,6 +52,16 @@ export class HomePage implements OnInit {
             });
             
         //console.log(this.allTripCards);
+    }
+
+    async createTripCards(trip: any) {
+
+        const modal = await this.modalCtrl.create({
+            component: VisitDetailsPage,
+            componentProps: { value: trip },
+          });
+
+        await modal.present();
     }
 
     teste() {

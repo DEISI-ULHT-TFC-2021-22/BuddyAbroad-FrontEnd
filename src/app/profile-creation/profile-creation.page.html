@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content>
 
 
   <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
@@ -29,8 +29,8 @@
             <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
           </ion-button>
         </section>
-
-        <section class="ion-text-center" *ngIf="isUploading && !isUploaded">
+        
+          <section class="ion-text-center" *ngIf="isUploading && !isUploaded">
           <div *ngIf="percentage | async as pct">
             Progress: {{ pct | number }}%
             <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
@@ -77,4 +77,4 @@
       </div>
     </ion-card>
   </form>
-</ion-content>
+</ion-content> -->

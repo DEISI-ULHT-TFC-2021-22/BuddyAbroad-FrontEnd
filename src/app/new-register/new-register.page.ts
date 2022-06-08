@@ -246,14 +246,6 @@ export class NewRegisterPage implements OnInit {
     }; 
 
 
-    this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
-      .subscribe(data => {
-        console.log(data['_body']);
-        console.log(data);
-       }, error => {
-        console.log(error);
-      });
-
     this.http.post('http://18.171.19.26/signup/?format=json', postData2, requestOptions)
     //.pipe(
      // catchError(this.handleError)
@@ -268,6 +260,13 @@ export class NewRegisterPage implements OnInit {
         }
 
         else{
+          this.http.post('http://18.171.19.26/users/?format=json', postData, requestOptions)
+          .subscribe(data => {
+            console.log(data['_body']);
+            console.log(data);
+           }, error => {
+            console.log(error);
+          });
           this.confirmation();
         }
 

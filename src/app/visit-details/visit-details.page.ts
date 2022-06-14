@@ -40,22 +40,15 @@ export class VisitDetailsPage implements OnInit {
 
     }
 
-    /*
-    getAllTrips() {
-        this.http.get<any[]>(`${environment.apiUrl}trips/`)
-            .subscribe(response => {
-                response.forEach(card => {
-                    this.allTripCards.push(card);
-                });                
-            }
-        );         
-        console.log(this.allTripCards);           
-    }*/
+    teste() {
+        this.router.navigate(['home'])
+        // this.router.navigate(['bookings', this.trip.id])
+    }
 
 
     async close() {
         await this.modalCtrl.dismiss();
-      }
+    }
 
     ngOnInit() {
         //const tripId: string = this.route.snapshot.paramMap.get('id');

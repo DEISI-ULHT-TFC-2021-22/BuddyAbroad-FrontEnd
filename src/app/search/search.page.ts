@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
+import {debounceTime, Observable, Subscription} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 import { ModalController } from '@ionic/angular';
@@ -17,8 +17,6 @@ import { compileInjectable } from '@angular/compiler';
 export class SearchPage implements OnInit {
 
     public allTripCards: any = [];
-    public allTripCardsBackup: any = this.allTripCards;
-    tripsList = [];
 
     constructor(
         private router: Router, 
@@ -58,19 +56,18 @@ export class SearchPage implements OnInit {
 
     async filterTrips(event) {        
         const searchTerm = event.srcElement.value;
+            
+        this.http.post<any>(`${environment.apiUrl}tripSearch/?format=json`, {
+            'string': searchTerm,
+        }).pipe(debounceTime(2000)).subscribe(response => {
+            this.allTripCards.splice(0);
+            response.forEach(card => {
+                this.allTripCards.push(card);
+            });
+        }); 
 
-        if (!searchTerm) {
-            this.allTripCards = this.allTripCardsBackup;
-            return this.allTripCards;
-        }
-
-        this.allTripCards = this.allTripCards.filter(currentTrip => {
-            if (currentTrip.name && searchTerm) {
-                return (currentTrip.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-            }
-        });
+        return this.allTripCards;
     }
-
 
     /*
     async ngOnInit() {

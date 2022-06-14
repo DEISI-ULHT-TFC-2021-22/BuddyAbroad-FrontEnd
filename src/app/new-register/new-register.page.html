@@ -17,14 +17,12 @@
         
       </ion-item>
     <br><br>
-    <span>{{'By signing up, you agree to our' | customTranslate | async}}<b>{{'Terms' | customTranslate | async}}</b> & <b>{{'Privacy Policy' | customTranslate | async}}</b>.</span>
+    <span>{{'By signing up, you agree to our ' | customTranslate | async}}<b>{{'Terms' | customTranslate | async}}</b> & <b>{{'Privacy Policy' | customTranslate | async}}</b>.</span>
 
     <ion-button type="submit" expand ="block" [disabled]="!myForm.valid">{{'SIGN UP' | customTranslate | async}}</ion-button>
     </form>
 
     <p id="login">{{'Have an account?' | customTranslate | async}} <a (click)="goLogInPage()">{{'Log In' | customTranslate | async}}</a></p>
 
-    <!-- <p><a (click)="goHttp()">qualquer cena</a></p> -->
-    
 </ion-content>
 

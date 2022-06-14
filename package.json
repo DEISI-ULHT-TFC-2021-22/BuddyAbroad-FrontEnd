@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^11.2.14",
     "@angular/router": "^11.2.14",
     "@awesome-cordova-plugins/ionic-webview": "^5.41.0",
-    "@capacitor/android": "^2.5.0",
+    "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
     "@ionic-native/camera": "^5.30.0",
     "@ionic-native/core": "^5.0.0",
@@ -36,6 +36,8 @@
     "cordova-ios": "6.2.0",
     "cordova-sqlite-storage": "^5.1.0",
     "ngx-translate": "github:ngx-translate/core",
+    "npm": "^8.12.1",
+    "rimraf": "^3.0.2",
     "rxfire": "^6.0.0",
     "rxjs": "~7.5.4",
     "tslib": "^2.0.0",
@@ -66,9 +68,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
-    "ts-node": "~8.3.0",
+    "ts-node": "9.1.1",
     "tslint": "~6.1.0",
-    "typescript": "^4.1.6"
+    "typescript": "4.1.6"
   },
   "description": "An Ionic project",
   "cordova": {

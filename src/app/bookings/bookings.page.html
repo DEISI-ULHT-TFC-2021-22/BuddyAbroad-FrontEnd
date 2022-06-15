@@ -41,14 +41,16 @@
 
         <div [ngSwitch]="type">
             <ion-list *ngSwitchCase="'pending'">
-                <div>
-                    <ion-card routerLink="/booked-trip-details/{{trip.id}}"
-                              color="white">
+                <div *ngFor="let trip of allTripsCards">
+                    <ion-card color="white">
+                        <ion-chip id="close-chip">
+                            <ion-icon name="close-circle" id="close-icon" (click)="deleteBooking(trip.id)"></ion-icon>
+                        </ion-chip>                        
                         <ion-img [src]="trip.imageURL"></ion-img>
                         <div class="myOverlay">
                             <p class="price-tag">
                                 01/01/2012 |
-                                {{trip.duration}}
+                                {{trip.duration}}min
                             </p>
                         </div>
                         <ion-card-header>
@@ -56,7 +58,7 @@
                                     style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}
                             </ion-card-title>
                             <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description}}</p>
-                        </ion-card-header>
+                        </ion-card-header>                        
                     </ion-card>
                 </div>
             </ion-list>

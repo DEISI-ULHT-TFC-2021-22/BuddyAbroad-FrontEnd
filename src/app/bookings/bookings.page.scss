@@ -81,3 +81,21 @@ ion-chip{
   color: #3D3D3D;
   text-transform: none;
 }
+
+#close-chip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
+}
+
+#close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  // --ionicon-stroke-width: 64px;
+}

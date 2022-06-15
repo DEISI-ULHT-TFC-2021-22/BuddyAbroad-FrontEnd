@@ -23,8 +23,6 @@ export class CustomTranslateService {
             text,
             sourceLanguageCode: 'en',
             targetLanguageCode: this.currentLang.value,
-            // sourceLanguageCode: this.currentLang.value,
-            // targetLanguageCode: 'en',
         });
     }
 

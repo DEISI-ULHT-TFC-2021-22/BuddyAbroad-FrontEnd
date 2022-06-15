@@ -33,6 +33,7 @@ export class NewProfilePage implements OnInit {
     .subscribe(data => {
       console.log(data)
       this.user = data;
+      localStorage.setItem('userId', this.user.id)
     })
   }
 

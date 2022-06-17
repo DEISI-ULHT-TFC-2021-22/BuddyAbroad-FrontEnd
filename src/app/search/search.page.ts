@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {debounceTime, Observable, Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 import { ModalController } from '@ionic/angular';

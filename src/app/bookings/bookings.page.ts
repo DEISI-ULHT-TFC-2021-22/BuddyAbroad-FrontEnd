@@ -17,9 +17,11 @@ export class BookingsPage implements OnInit {
 
 
     constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {
-        // route.params.subscribe(() => {
-        //     this.sync()
-        // });
+         route.params.subscribe(() => {
+            this.type = 'pending'
+            this.allTripsCards.splice(0);
+            this.sync()
+         });
     }
 
 
@@ -27,7 +29,7 @@ export class BookingsPage implements OnInit {
         this.http.delete(`${environment.apiUrl}userTrips/${tripId}`)
             .subscribe(response => {
                 console.log(response)
-                if(response.status === 200) {
+                if(response == 200) {
                     this.allTripsCards.forEach(card => {
                         if(card.id === tripId) {
                             this.allTripsCards.splice(card)
@@ -50,8 +52,5 @@ export class BookingsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.type = 'pending'
-        this.allTripsCards.splice(0);
-        this.sync()
     }
 }

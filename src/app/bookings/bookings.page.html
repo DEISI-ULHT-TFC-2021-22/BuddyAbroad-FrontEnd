@@ -41,10 +41,10 @@
 
         <div [ngSwitch]="type">
             <ion-list *ngSwitchCase="'pending'">
-                <div *ngFor="let trip of allTripsCards">
+                <div *ngFor="let trip of allTripsCards, ; let i= index">
                     <ion-card color="white">
                         <ion-chip id="close-chip">
-                            <ion-icon name="close-circle" id="close-icon" (click)="deleteBooking(trip.id)"></ion-icon>
+                            <ion-icon name="close-circle" id="close-icon" (click)="deleteBooking(i)"></ion-icon>
                         </ion-chip>                        
                         <ion-img [src]="trip.imageURL"></ion-img>
                         <div class="myOverlay">

@@ -35,7 +35,7 @@ export class NovoLoginPage implements OnInit {
 
   myForm : FormGroup;
   loginForm = FormJSon;
-  email = ""
+  //email = ""
 
   constructor(private fb : FormBuilder, private alertCtrl : AlertController, public http : HttpClient, private route : Router, private toastCtrl: ToastController, private modalCtrl: ModalController){
     console.log(FormJSon);
@@ -75,10 +75,11 @@ export class NovoLoginPage implements OnInit {
   }
 
   public goHomePage(): void{
-    //this.route.navigate(['//tabs/profile']);
-    let navigationExtras: NavigationExtras = { state: { email: this.email = this.myForm.controls['email'].value } };
-    console.log(this.email)
-    this.route.navigate(['//tabs/profile'], navigationExtras,);
+    // let navigationExtras: NavigationExtras = { state: { email: this.email = this.myForm.controls['email'].value } };
+    // console.log(this.email)
+    // this.route.navigate(['//tabs/profile'], navigationExtras,);
+    localStorage.setItem('email', this.myForm.controls['email'].value)
+    this.route.navigate(['//tabs/home']);
   }
 
 

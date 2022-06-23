@@ -22,11 +22,11 @@ export class BookingsPage implements OnInit {
 
 
     constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {
-         route.params.subscribe(() => {
-            this.type = 'pending'
-            this.allTripsCards.splice(0);
-            this.sync()
-         });
+        //  route.params.subscribe(() => {
+        //     this.type = 'pending'
+        //     this.allTripsCards.splice(0);
+        //     this.sync()
+        //  });
     }
 
 
@@ -44,7 +44,6 @@ export class BookingsPage implements OnInit {
                     })
                 }
             })
-            this.router.navigate(["tabs/search"])
     }
 
 
@@ -84,6 +83,13 @@ export class BookingsPage implements OnInit {
 
     ngOnInit() {
 
+    }
+
+    ionViewWillEnter() {
+            this.type = 'pending'
+            this.allTripsCards.splice(0);
+            this.sync()
+            console.log(this.bookingIds)
     }
 
     

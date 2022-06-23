@@ -9,10 +9,10 @@ import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 })
 export class NewProfilePage implements OnInit {
 
-  email = ""
+  //email = ""
 
   constructor(private route : Router, private http : HttpClient, private router:ActivatedRoute) {
-    this.email= this.route.getCurrentNavigation().extras.state.email;
+    //this.email= this.route.getCurrentNavigation().extras.state.email;
     router.params.subscribe(val => {
       this.sync()
     });
@@ -29,7 +29,8 @@ export class NewProfilePage implements OnInit {
 
 
   sync() {
-    this.http.get(`http://18.171.19.26/usersEmail/${this.email}`)
+    //this.http.get(`http://18.171.19.26/usersEmail/${this.email}`)
+    this.http.get(`http://18.171.19.26/usersEmail/${localStorage.getItem('email')}`)
     .subscribe(data => {
       console.log(data)
       this.user = data;
@@ -43,7 +44,7 @@ export class NewProfilePage implements OnInit {
   }
 
    test() {
-     console.log(this.email)
+     //console.log(this.email)
   }
 
 }

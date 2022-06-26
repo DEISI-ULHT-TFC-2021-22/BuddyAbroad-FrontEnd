@@ -2,10 +2,15 @@
     <ion-toolbar style="color:#F0F0F0;">
         <ion-buttons slot="start">
             <!-- <ion-button (click)="goback()"> -->
-                <ion-button (click)="close()">
+            <ion-button (click)="close()">
                 <ion-icon name="close-circle" class="close"></ion-icon>
             </ion-button>
         </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button [routerLink]="['/tabs/bookings']" (click)="addToFavourites()">
+                <ion-icon name="star" class="favourite"></ion-icon>
+            </ion-button>
+        </ion-buttons>    
     </ion-toolbar>
 </ion-header>
 

@@ -63,6 +63,23 @@ export class VisitDetailsPage implements OnInit {
         this.close();
     }
 
+    addToFavourites() {
+        this.http.post<any>(`${environment.apiUrl}postUserTrips`, {
+            'paidprice': this.trip.price,
+            'date': '2022-02-07',
+            'time': '16:20',
+            'status': 'pending',
+            'groupsize': this.trip.maxsize,
+            'guide': '1',
+            'tourist': this.userId,
+            'reference': this.trip.id
+        }).subscribe(response => {
+            console.log(response)
+        });
+
+        this.close();
+    }
+
     // getBuddy() {
     //     this.http.get<any>(`${environment.apiUrl}users/`)
     //         .subscribe(response => {

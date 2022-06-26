@@ -22,7 +22,6 @@ export class NewProfilePage implements OnInit {
   
   
   ngOnInit(): void {
-    this.sync()
   }
 
   user: any = [];
@@ -39,12 +38,16 @@ export class NewProfilePage implements OnInit {
   }
 
   public goProfileCreationPage(): void {
-    let navigationExtras: NavigationExtras = { state: { id: this.user.id } };
-    this.route.navigate(['/new-profile-creation'], navigationExtras,);
+    //let navigationExtras: NavigationExtras = { state: { id: this.user.id } };
+    //this.route.navigate(['/new-profile-creation'], navigationExtras,);
+    this.route.navigate(['/new-profile-creation']);
   }
 
    test() {
      //console.log(this.email)
   }
+
+
+ 
 
 }

@@ -101,9 +101,9 @@ export class NewProfileCreationPage implements OnInit {
 
 
   async submitForm() {
-    //  let formData = new FormData();
-    //  formData.append("file", this.file)
-    //  formData.append("name", this.file.name)
+    let formData = new FormData();
+    formData.append("file", this.file)
+    formData.append("name", this.file.name)
 
     let postData = {
       "id": this.user.id,
@@ -113,7 +113,7 @@ export class NewProfileCreationPage implements OnInit {
       "email": this.user.email,
       "dob": this.user.dob,
       "phone": this.user.phone,
-      // "imageName": this.file.name,
+      "imageName": this.file.name,
       "description": this.description,
       "rating": this.user.rating,
       "tourcount": this.user.rating,
@@ -125,19 +125,19 @@ export class NewProfileCreationPage implements OnInit {
       .subscribe((response) => console.log(response))
 
 
-    // this.http.post('http://18.171.19.26/imageUpload/', formData)
-    //     .subscribe(data => {
-    //     console.log(data['_body']);
-    //     console.log(data);
+    this.http.post('http://18.171.19.26/imageUpload/', formData)
+        .subscribe(data => {
+        console.log(data['_body']);
+        console.log(data);
 
-    //   }, error => {
-    //     console.log(error);
-    //   }); 
+      }, error => {
+        console.log(error);
+      }); 
 
       
     this.route.navigate(['tabs/profile'])
     .then(() => {
-      window.location.reload();
+      window.location.reload()
     });
   }
 

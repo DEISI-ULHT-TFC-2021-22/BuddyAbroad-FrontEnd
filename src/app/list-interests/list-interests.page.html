@@ -23,7 +23,7 @@
     <h4 style="display:inline;">Selected Interests</h4>
     &nbsp;
     <p class="disclaimer" style="display:inline;">(Select up to 5 interests)</p>
-    <ion-chip (click)="removeInterest(select,selectedList)" *ngFor="let select of selectedList" >
+    <ion-chip *ngFor="let select of selectedList, ; let i= index" (click)="removeInterest(i,selectedList)" >
       <ion-label>
         {{ select }}
       </ion-label>

@@ -57,12 +57,11 @@ selectLanguage(input,list) {
 }
 
 removeLanguage(input,list) {
-  if(this.selectedList.includes(list[list.indexOf(input)])) {
+  if(this.selectedList.includes(list[input])) {
     this.selectedList.splice(input,1);
     console.log(this.selectedList);
   }  
 }
-
 
 toggleLanguages() {
   this.visibleLanguages = !this.visibleLanguages

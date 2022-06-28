@@ -27,4 +27,10 @@ export class SettingsPage implements OnInit {
     this.customTranslateService.currentLang.next(this.language);
   }
 
+  signOut() {
+    this.router.navigate(['/novo-login']).then(() => {
+      window.location.reload()
+    });
+  }
+
 }

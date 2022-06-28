@@ -24,7 +24,7 @@
 
 <ion-content>
     <section>
-        <ion-segment color="warning" [(ngModel)]="type" scrollable>
+        <ion-segment color="warning" [(ngModel)]="type" >
             <ion-segment-button value="pending">
                 <ion-label class="labelHeader">Pending</ion-label>
                 <ion-icon name="hourglass-outline"></ion-icon>
@@ -37,6 +37,10 @@
                 <ion-label class="labelHeader">Completed</ion-label>
                 <ion-icon name="checkbox-outline"></ion-icon>
             </ion-segment-button>
+            <ion-segment-button value="favourites">
+                <ion-label class="labelHeader">Favourites</ion-label>
+                <ion-icon name="star-outline"></ion-icon>
+            </ion-segment-button>
         </ion-segment>
 
         <div [ngSwitch]="type">
@@ -46,6 +50,29 @@
                         <ion-chip id="close-chip">
                             <ion-icon name="close-circle" id="close-icon" (click)="deleteBooking(i)"></ion-icon>
                         </ion-chip>                        
+                        <ion-img [src]="trip.imageURL"></ion-img>
+                        <div class="myOverlay">
+                            <p class="price-tag">
+                                01/01/2012 |
+                                {{trip.duration}}min
+                            </p>
+                        </div>
+                        <ion-card-header>
+                            <ion-card-title
+                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}
+                            </ion-card-title>
+                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description}}</p>
+                        </ion-card-header>                        
+                    </ion-card>
+                </div>
+            </ion-list>
+        </div>
+
+        <div [ngSwitch]="type">
+            <ion-list *ngSwitchCase="'favourites'">
+                <div *ngFor="let trip of allTripsCards, ; let i= index">
+                    <ion-card color="white">
+                            <ion-icon name="star" id="favourite-icon" (click)="deleteBooking(i)"></ion-icon>                        
                         <ion-img [src]="trip.imageURL"></ion-img>
                         <div class="myOverlay">
                             <p class="price-tag">

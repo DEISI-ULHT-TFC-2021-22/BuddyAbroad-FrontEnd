@@ -32,7 +32,7 @@ export class BookingsPage implements OnInit {
 
     deleteBooking(pos) {
         let index = this.bookingIds[pos]
-        console.log(index)
+        console.log(this.bookingIds[pos])
         this.http.delete(`${environment.apiUrl}userTrips/${index}`)
             .subscribe(response => {
                 console.log(response)
@@ -44,6 +44,7 @@ export class BookingsPage implements OnInit {
                     })
                 }
             })
+            setTimeout(() => window.location.reload(),500)
     }
 
 
@@ -87,7 +88,8 @@ export class BookingsPage implements OnInit {
 
     ionViewWillEnter() {
             this.type = 'pending'
-            this.allTripsCards.splice(0);
+            this.allTripsCards.splice(0)
+            this.bookingIds.splice(0)
             this.sync()
             console.log(this.bookingIds)
     }

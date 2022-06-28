@@ -21,7 +21,8 @@ export class NewProfileCreationPage implements OnInit {
   id = "";
 
   constructor(private route: Router, private navCtrl: NavController, private http: HttpClient, private modalCtrl: ModalController, router: ActivatedRoute) {
-    this.id = this.route.getCurrentNavigation().extras.state.id;
+    //this.id = this.route.getCurrentNavigation().extras.state.id;
+    this.id = localStorage.getItem('userId')
     router.params.subscribe(val => {
       this.sync()
     });
@@ -32,7 +33,7 @@ export class NewProfileCreationPage implements OnInit {
   }
 
   goback() {
-    this.navCtrl.pop();
+    this.route.navigate(['tabs/profile']);
   }
 
   onFileChange(fileChangeEvent) {
@@ -120,6 +121,10 @@ export class NewProfileCreationPage implements OnInit {
     };
 
 
+    this.http.put(`http://18.171.19.26/users/${this.id}`, postData)
+      .subscribe((response) => console.log(response))
+
+
     this.http.post('http://18.171.19.26/imageUpload/', formData)
         .subscribe(data => {
         console.log(data['_body']);
@@ -129,14 +134,11 @@ export class NewProfileCreationPage implements OnInit {
         console.log(error);
       }); 
 
-
-
-    this.http.put(`http://18.171.19.26/users/${this.id}`, postData)
-      .subscribe((response) => console.log(response))
-
       
-
-    this.route.navigate(['tabs/home']);
+    this.route.navigate(['tabs/profile'])
+    .then(() => {
+      window.location.reload()
+    });
   }
 
 

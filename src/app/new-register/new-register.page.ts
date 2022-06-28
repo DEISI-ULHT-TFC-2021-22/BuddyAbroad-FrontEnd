@@ -307,7 +307,12 @@ export class NewRegisterPage implements OnInit {
         console.log(data['_body']);
         console.log(data);
 
-        if(data == "Error: Code Mismatch!"){
+        if(data == "Error: Code expired"){
+          this.wrongCode()
+          this.confirmation()
+        }
+
+        if(data == "Error: Code mismatch"){
           //console.log("pls man")
           this.wrongCode()
           this.confirmation()

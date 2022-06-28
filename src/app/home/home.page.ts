@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
-import {HomeTripCardsModel} from '../shared/homeTripCards.model';
-import {map, switchMap, takeUntil} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { HomeTripCardsModel } from '../shared/homeTripCards.model';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ModalController } from '@ionic/angular';
 import { VisitDetailsPage } from '../visit-details/visit-details.page';
-import {ComponentProps, ModalOptions} from '@ionic/core';
+import { ComponentProps, ModalOptions } from '@ionic/core';
 
 @Component({
     selector: 'app-home',
@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
 
     public allHomeTripCards: any = [];
     public allHomeTripCardsBackup: any = [];
-    public labels: any =['Local Culture','Sightseeing Tours']
+    public labels: any = ['Local Culture', 'Sightseeing Tours']
 
     public allTripCards: any = [];
 
@@ -34,12 +34,18 @@ export class HomePage implements OnInit {
         autoplay: true,
     };
 
+    user: any = [];
 
     constructor(private router: Router, private http: HttpClient, private modalCtrl: ModalController) {
     }
 
     ngOnInit() {
-        //await this.initializeItems();
+        this.http.get(`http://18.171.19.26/usersEmail/${localStorage.getItem('email')}`)
+            .subscribe(data => {
+                console.log(data)
+                this.user = data;
+                localStorage.setItem('userId', this.user.id)
+            })
         this.getAllTrips();
     }
 
@@ -48,9 +54,9 @@ export class HomePage implements OnInit {
             .subscribe(response => {
                 response.forEach(card => {
                     this.allTripCards.push(card);
-                });                
+                });
             });
-            
+
         //console.log(this.allTripCards);
     }
 
@@ -59,7 +65,7 @@ export class HomePage implements OnInit {
         const modal = await this.modalCtrl.create({
             component: VisitDetailsPage,
             componentProps: { value: trip },
-          });
+        });
 
         await modal.present();
     }
@@ -72,27 +78,27 @@ export class HomePage implements OnInit {
         });
     }
 
-/*
-    async initializeItems(): Promise<any> {
-        await this.db.collection('users').get()
-            .subscribe(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    this.getTargetUserTrips(doc.id);
+    /*
+        async initializeItems(): Promise<any> {
+            await this.db.collection('users').get()
+                .subscribe(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        this.getTargetUserTrips(doc.id);
+                    });
                 });
-            });
-        this.allHomeTripCardsBackup = this.allHomeTripCards;
-        return this.allHomeTripCards;
-        // return
-    }
-
-    public getTargetUserTrips(targetUser): Subscription {
-        return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
-            .subscribe(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    this.allHomeTripCards.push(doc.data());
-                    this.allHomeTripCards.sort((a, b) => a.rating - b.rating); // Ascending sort
-                    this.allHomeTripCards.reverse()
+            this.allHomeTripCardsBackup = this.allHomeTripCards;
+            return this.allHomeTripCards;
+            // return
+        }
+    
+        public getTargetUserTrips(targetUser): Subscription {
+            return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
+                .subscribe(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        this.allHomeTripCards.push(doc.data());
+                        this.allHomeTripCards.sort((a, b) => a.rating - b.rating); // Ascending sort
+                        this.allHomeTripCards.reverse()
+                    });
                 });
-            });
-    }*/
+        }*/
 }

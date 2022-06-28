@@ -101,25 +101,44 @@ export class NewProfileCreationPage implements OnInit {
 
 
   async submitForm() {
+
+    let postData = {}
     let formData = new FormData();
-    formData.append("file", this.file)
-    formData.append("name", this.file.name)
 
-    let postData = {
-      "id": this.user.id,
-      "interests": this.convertToFormat(this.interestsList),
-      "languages": this.convertToFormat(this.languagesList),
-      "name": this.user.name,
-      "email": this.user.email,
-      "dob": this.user.dob,
-      "phone": this.user.phone,
-      "imageName": this.file.name,
-      "description": this.description,
-      "rating": this.user.rating,
-      "tourcount": this.user.rating,
-      "guide": this.user.guide
-    };
+    if(this.file !== undefined) {
+      formData.append("file", this.file)
+      formData.append("name", this.file.name)
 
+      postData = {
+        "id": this.user.id,
+        "interests": this.convertToFormat(this.interestsList),
+        "languages": this.convertToFormat(this.languagesList),
+        "name": this.user.name,
+        "email": this.user.email,
+        "dob": this.user.dob,
+        "phone": this.user.phone,
+        "imageName": this.file.name,
+        "description": this.description,
+        "rating": this.user.rating,
+        "tourcount": this.user.rating,
+        "guide": this.user.guide
+      };
+    } else {
+      postData = {
+        "id": this.user.id,
+        "interests": this.convertToFormat(this.interestsList),
+        "languages": this.convertToFormat(this.languagesList),
+        "name": this.user.name,
+        "email": this.user.email,
+        "dob": this.user.dob,
+        "phone": this.user.phone,
+        "imageName": this.user.filename,
+        "description": this.description,
+        "rating": this.user.rating,
+        "tourcount": this.user.rating,
+        "guide": this.user.guide
+      };
+    }
 
     this.http.put(`http://18.171.19.26/users/${this.id}`, postData)
       .subscribe((response) => console.log(response))

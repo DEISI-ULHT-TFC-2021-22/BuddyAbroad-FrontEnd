@@ -30,17 +30,17 @@
   </div>
 
   <div class="center">
-    <h1>{{ user.name }}</h1>
+    <h1>{{ user.name  | customTranslate | async}}</h1>
   </div>
 
   <div class="row">
     <ion-item lines="none" class="left">
       <ion-label class="center">
-          <h2>Speaks</h2>
+          <h2>{{'Speaks' | customTranslate | async}}</h2>
           <ion-list *ngFor="let language of user.languages">
             <ion-chip>
               <ion-label>
-                {{ language.name }}
+                {{ language.name  | customTranslate | async}}
               </ion-label>
             </ion-chip>
           </ion-list>
@@ -48,7 +48,7 @@
   </ion-item>
   <ion-item lines="none" class="middle">
     <ion-label class="center">
-        <h2>Rating</h2>
+        <h2>{{'Rating' | customTranslate | async}}</h2>
         <p> {{ user.rating }}
             <ion-icon name="star"></ion-icon>
         </p>
@@ -56,11 +56,11 @@
   </ion-item>
   <ion-item lines="none" class="right">
     <ion-label class="center">
-        <h2>Interests</h2>
+        <h2>{{'Interests' | customTranslate | async}}</h2>
         <ion-list *ngFor="let interest of user.interests">
           <ion-chip>
             <ion-label>
-              {{ interest.name }}
+              {{ interest.name  | customTranslate | async}}
             </ion-label>
           </ion-chip>
         </ion-list>
@@ -71,8 +71,8 @@
 
   <div>
     <ion-label class="descriptionContainer">
-      <h2>Description</h2>
-      <p>{{ user.description }}</p>
+      <h2>{{'Description' | customTranslate | async}}</h2>
+      <p>{{ user.description  | customTranslate | async}}</p>
     </ion-label>
   </div>
 
@@ -81,6 +81,6 @@
 
 
     <div class="editButtonContainer">
-      <ion-button class="editButton" (click)="goProfileCreationPage()"><p>EDIT PROFILE</p></ion-button>
+      <ion-button class="editButton" (click)="goProfileCreationPage()"><p>{{'EDIT PROFILE' | customTranslate | async}}</p></ion-button>
     </div>
 </ion-content>

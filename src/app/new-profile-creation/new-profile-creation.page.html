@@ -20,14 +20,14 @@
 
 <div class="container">
   <ion-item (click)="openInterestList()" expand="full">
-    <ion-label>Interests</ion-label>
+    <ion-label>{{'Interests' | customTranslate | async}}</ion-label>
   </ion-item>
 </div>
 
 <div class="ion-padding-start">
   <ion-chip *ngFor="let interest of interestsList">
     <ion-label>
-      {{ interest }}
+      {{ interest  | customTranslate | async}}
     </ion-label>
     <ion-icon name="thumbs-up" [style.color]="'#fff'"></ion-icon>
   </ion-chip>
@@ -36,14 +36,14 @@
 
 <div class="container">
   <ion-item (click)="openLanguageList()" expand="full">
-    <ion-label>Languages</ion-label>
+    <ion-label>{{'Languages' | customTranslate | async}}</ion-label>
   </ion-item>
 </div>
 
 <div class="ion-padding-start">
   <ion-chip *ngFor="let language of languagesList">
     <ion-label>
-      {{ language }}
+      {{ language  | customTranslate | async}}
     </ion-label>
     <ion-icon name="thumbs-up"  [style.color]="'#fff'"></ion-icon>
   </ion-chip>
@@ -52,13 +52,13 @@
 
 <div class="description">
   <ion-item>
-    <ion-label>Description</ion-label>
+    <ion-label>{{'Description' | customTranslate | async}}</ion-label>
     <ion-textarea value="{{user.description}}" [(ngModel)]="description" maxlength=500 autoGrow="true"></ion-textarea>
   </ion-item>
 </div>
 
 <div class="editButtonContainer">
-  <ion-button (click)="submitForm()" class="editButton"><p>Confirm</p></ion-button>
+  <ion-button (click)="submitForm()" class="editButton"><p>{{'Confirm' | customTranslate | async}}</p></ion-button>
 </div>
 
 

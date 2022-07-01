@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ListLanguagesPageRoutingModule } from './list-languages-routing.module';
 
 import { ListLanguagesPage } from './list-languages.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     ListLanguagesPageRoutingModule
   ],
   declarations: [ListLanguagesPage]

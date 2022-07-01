@@ -26,19 +26,19 @@
     <section>
         <ion-segment color="warning" [(ngModel)]="type" >
             <ion-segment-button value="pending">
-                <ion-label class="labelHeader">Pending</ion-label>
+                <ion-label class="labelHeader">{{'Pending'  | customTranslate | async}}</ion-label>
                 <ion-icon name="hourglass-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="booked" checked>
-                <ion-label class="labelHeader">Booked</ion-label>
+                <ion-label class="labelHeader">{{'Booked' | customTranslate | async}}</ion-label>
                 <ion-icon name="calendar-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="completed">
-                <ion-label class="labelHeader">Completed</ion-label>
+                <ion-label class="labelHeader">{{'Completed' | customTranslate | async}}</ion-label>
                 <ion-icon name="checkbox-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="favourites">
-                <ion-label class="labelHeader">Favourites</ion-label>
+                <ion-label class="labelHeader">{{'Favourites' | customTranslate | async}}</ion-label>
                 <ion-icon name="star-outline"></ion-icon>
             </ion-segment-button>
         </ion-segment>
@@ -59,9 +59,9 @@
                         </div>
                         <ion-card-header>
                             <ion-card-title
-                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}
+                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name | customTranslate | async}}
                             </ion-card-title>
-                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description}}</p>
+                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description | customTranslate | async}}</p>
                         </ion-card-header>                        
                     </ion-card>
                 </div>
@@ -83,9 +83,9 @@
                             </div>
                             <ion-card-header>
                                 <ion-card-title
-                                        style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name}}
+                                        style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip.name | customTranslate | async}}
                                 </ion-card-title>
-                                <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description}}</p>
+                                <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip.description | customTranslate | async}}</p>
                             </ion-card-header>                        
                         </ion-card>
                     </div>

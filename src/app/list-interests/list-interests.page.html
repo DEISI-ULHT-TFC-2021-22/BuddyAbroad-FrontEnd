@@ -8,7 +8,7 @@
 
     <ion-buttons slot="end">
       <ion-button (click)="save()">
-        <ion-label class="confirm">Confirm</ion-label>
+        <ion-label class="confirm">{{'Confirm' | customTranslate | async}}</ion-label>
       </ion-button>
     </ion-buttons>
 
@@ -20,12 +20,12 @@
 
 
   <div class="ion-padding-start">
-    <h4 style="display:inline;">Selected Interests</h4>
+    <h4 style="display:inline;">{{'Selected Interests' | customTranslate | async}}</h4>
     &nbsp;
-    <p class="disclaimer" style="display:inline;">(Select up to 5 interests)</p>
+    <p class="disclaimer" style="display:inline;">{{'(Select up to 5 interests)' | customTranslate | async}}</p>
     <ion-chip *ngFor="let select of selectedList, ; let i= index" (click)="removeInterest(i,selectedList)" >
       <ion-label>
-        {{ select }}
+        {{ select  | customTranslate | async}}
       </ion-label>
       <ion-icon name="close-outline"  [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -35,13 +35,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleSports()" >
       <ion-icon [name]="visibleSports ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Sports 
+      {{'Sports'  | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleSports">
       <ion-chip (click)="selectInterest(sport,sportsList)" *ngFor="let sport of sportsList">
         <ion-label>
-          {{ sport }}
+          {{ sport  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add"  [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -53,13 +53,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleWelness()" >
       <ion-icon [name]="visibleWelness ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Wellness 
+      {{'Wellness' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleWelness">
       <ion-chip (click)="selectInterest(wellness,wellnessList)" *ngFor="let wellness of wellnessList" >
         <ion-label>
-          {{ wellness }}
+          {{ wellness  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -71,13 +71,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleOutdoor()" >
       <ion-icon [name]="visibleOutdoor ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Outdoor Activities 
+      {{'Outdoor Activities' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleOutdoor">
       <ion-chip (click)="selectInterest(outdoor,outdoorList)" *ngFor="let outdoor of outdoorList" >
         <ion-label>
-          {{ outdoor }}
+          {{ outdoor  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'" ></ion-icon>
     </ion-chip>
@@ -89,13 +89,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleArt()" >
       <ion-icon [name]="visibleArt ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Arts and Crafts
+      {{'Arts and Crafts' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleArt">
       <ion-chip (click)="selectInterest(art,artList)" *ngFor="let art of artList" >
         <ion-label>
-          {{ art }}
+          {{ art  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'" ></ion-icon>
     </ion-chip>
@@ -107,13 +107,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleMusic()" >
       <ion-icon [name]="visibleMusic ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Music & Entertainment
+      {{'Music & Entertainment' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleMusic">
       <ion-chip (click)="selectInterest(music,musicList)" *ngFor="let music of musicList" >
         <ion-label>
-          {{ music }}
+          {{ music  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -125,13 +125,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleCulture()" >
       <ion-icon [name]="visibleCulture ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Culture 
+      {{'Culture'  | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleCulture">
       <ion-chip (click)="selectInterest(culture,cultureList)" *ngFor="let culture of cultureList" >
         <ion-label>
-          {{ culture }}
+          {{ culture  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -143,13 +143,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleTechnology()" >
       <ion-icon [name]="visibleTechnology ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Technology
+      {{'Technology' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleTechnology">
       <ion-chip (click)="selectInterest(technology,technologyList)" *ngFor="let technology of technologyList" >
         <ion-label>
-          {{ technology }}
+          {{ technology  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -161,13 +161,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleMythic()" >
       <ion-icon [name]="visibleMythic ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Mysticism
+      {{'Mysticism' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleMythic">
       <ion-chip (click)="selectInterest(mythic,mysticismList)" *ngFor="let mythic of mysticismList" >
         <ion-label>
-          {{ mythic }}
+          {{ mythic  | customTranslate | async}}
         </ion-label>
       <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
     </ion-chip>
@@ -179,13 +179,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleNight()" >
       <ion-icon [name]="visibleNight ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Nightlife 
+      {{'Nightlife' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleNight">
       <ion-chip (click)="selectInterest(nightlife,nightlifeList)" *ngFor="let nightlife of nightlifeList" >
         <ion-label>
-          {{ nightlife }}
+          {{ nightlife  | customTranslate | async}}
         </ion-label>
         <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
       </ion-chip>
@@ -197,13 +197,13 @@
   <div class="ion-padding-start">
     <h4 (click)="toggleFood()" >
       <ion-icon [name]="visibleFood ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      Food/Drink Hobbies 
+      {{'Food' | customTranslate | async}} / {{'Drink Hobbies' | customTranslate | async}}
     </h4>
 
     <div *ngIf="visibleFood">
       <ion-chip (click)="selectInterest(food,foodList)" *ngFor="let food of foodList" >
         <ion-label>
-          {{ food }}
+          {{ food | customTranslate | async}}
         </ion-label>
         <ion-icon name="add" [style.color]="'#fff'"></ion-icon>
       </ion-chip>

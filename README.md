@@ -1,5 +1,5 @@
 # BuddyAbroad-FrontEnd 
-Tomás Neto - a21903361
+Tomás Neto - a21903361 <br/>
 Rodrigo Santos - a21904445
 
 ## Instalação da apk

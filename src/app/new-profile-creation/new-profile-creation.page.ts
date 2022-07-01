@@ -156,7 +156,7 @@ export class NewProfileCreationPage implements OnInit {
       
     this.route.navigate(['tabs/profile'])
     .then(() => {
-      window.location.reload()
+      setTimeout(() => window.location.reload(),500)
     });
   }
 

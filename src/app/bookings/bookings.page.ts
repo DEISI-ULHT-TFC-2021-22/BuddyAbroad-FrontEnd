@@ -19,6 +19,8 @@ export class BookingsPage implements OnInit {
 
     public allTripsCards: any = [];
     public trips: any = [];
+    public favTrips: any = [];
+    public favTripsId: any = [];
 
 
     constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {
@@ -29,6 +31,23 @@ export class BookingsPage implements OnInit {
         //  });
     }
 
+
+    deleteFavourites(pos) {
+        let index = this.favTripsId[pos]
+
+        this.http.delete(`${environment.apiUrl}deleteUserFavourites/${index}`)
+            .subscribe(response => {
+                console.log(response)
+                if(response == 200) {
+                    this.favTrips.forEach(card => {
+                        if(card.id === this.favTripsId[pos]) {
+                            this.favTrips.splice(card)
+                        }
+                    })
+                }
+            })
+            setTimeout(() => window.location.reload(),500)
+    }
 
     deleteBooking(pos) {
         let index = this.bookingIds[pos]
@@ -79,6 +98,28 @@ export class BookingsPage implements OnInit {
             }
         );
 
+        this.http.get<any>(`${environment.apiUrl}getTripsFavourites/${userId}`)
+            .subscribe(response => {
+                if(response.length > 0) {
+                    response.forEach(obj => {
+                        this.favTrips.push(obj);
+                    });
+                }
+            }
+        );
+        
+        this.http.get<any>(`${environment.apiUrl}getObjectFavourites/${userId}`)
+            .subscribe(response => {
+                if(response.length > 0) {
+                    response.forEach(obj => {
+                        this.favTripsId.push(obj.id);
+                    });
+                }
+            }
+        );
+        
+        
+        console.log(this.favTrips)
         //console.log(this.bookingIds)
     }
 
@@ -90,6 +131,7 @@ export class BookingsPage implements OnInit {
             this.type = 'pending'
             this.allTripsCards.splice(0)
             this.bookingIds.splice(0)
+            this.favTrips.splice(0);
             this.sync()
             console.log(this.bookingIds)
     }
